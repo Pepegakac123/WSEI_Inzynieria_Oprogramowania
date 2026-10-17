@@ -14,7 +14,7 @@ Booksy składa się z **dwóch aplikacji**:
 
 **Jak Booksy zarabia:**
 - **abonament:** ok. 145 zł netto miesięcznie za salon + 35 zł za każdego kolejnego pracownika;
-- **Boost:** jeśli nowy klient znajdzie salon w wyszukiwarce Booksy, salon oddaje Booksy **35–45% ceny jego pierwszej wizyty**;
+- **Boost:** płatna promocja salonu w wyszukiwarce Booksy. Gdy nowy klient znajdzie salon w ten sposób, salon oddaje Booksy **35–45% ceny jego pierwszej wizyty** (szczegóły w punkcie 1.3);
 - **prowizje od płatności online:** ok. 1,9% + 0,49 zł od transakcji.
 
 **Ciekawy kontrast w opiniach:**
@@ -73,7 +73,19 @@ Klient rezerwuje wizytę i nie przychodzi (*no-show*) albo odwołuje ją godzin�
 **Ile to kosztuje:** jeden z postów na Reddicie wylicza, że salon z 40 wizytami tygodniowo, średnią ceną 85 dolarów i 15% nieobecności traci **ok. 31 tys. dolarów rocznie**.
 
 **Druga bolączka salonów: Boost** (warto wspomnieć)
-Booksy pobiera prowizję za klienta „przyprowadzonego” przez wyszukiwarkę. Salony skarżą się, że dostają ją także za klientów, którzy przyszli z Instagrama albo z polecenia, a udowodnić tego nie mają jak. Z polskich opinii: *„naliczanie boosta po 200 zł od klientki??”*, a wyłączenie Boosta ma trwać *„półtora miesiąca”*.
+
+*Czym jest Boost?* To płatna **promocja salonu w wyszukiwarce Booksy**, podobna do reklamy w Google. Salon, który włączy Boost, jest częściej i wyżej pokazywany osobom szukającym np. „fryzjer Kraków”. Za samo wyświetlanie salon nie płaci. Płaci dopiero wtedy, gdy **nowy klient** znajdzie go w wyszukiwarce Booksy i **odbędzie pierwszą wizytę**. Wtedy Booksy pobiera prowizję:
+- **35% netto** ceny tej pierwszej wizyty przy umowie na 12 miesięcy,
+- **45% netto** przy umowie na czas nieokreślony.
+
+Kolejne wizyty tego klienta są już bez prowizji.
+
+*Przykład:* nowa klientka znajduje salon przez Booksy i robi farbowanie za 300 zł. Przy stawce 45% salon oddaje Booksy 135 zł netto, czyli ok. **166 zł z VAT**. Ponad połowa ceny usługi idzie do Booksy. To prawdopodobnie tłumaczy polską opinię o „prowizji 55%”: 45% + 23% VAT ≈ 55%.
+
+*Gdzie jest problem?* Booksy samo decyduje, czy klient „przyszedł z Boosta”. Salony skarżą się, że płacą prowizję także za klientów, którzy przyszli z Instagrama albo z polecenia i tylko zarezerwowali wizytę przez aplikację. Salon nie ma jak udowodnić, skąd klient naprawdę się dowiedział. Z opinii:
+- *„Booksy przypisywało do Boosta wszystkich klientów, nawet tych z Instagrama i z poleceń. Kazali przesłać dowody, ale co można wysłać poza zrzutem ekranu?”* (Reddit, 10.2025)
+- *„naliczanie boosta po 200 zł od klientki??”* (Trustpilot PL, 06.2026)
+- wyłączenie Boosta ma trwać *„półtora miesiąca”* (Trustpilot PL, 06.2026)
 
 ---
 
