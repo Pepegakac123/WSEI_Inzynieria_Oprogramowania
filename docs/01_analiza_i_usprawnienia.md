@@ -62,12 +62,10 @@ Wiele salonów wymaga przy rezerwacji **zadatku** (np. 50 zł) albo podpięcia k
 ### Problem po stronie SALONU: „Klient nie przyszedł, a ja zostaję z pustym fotelem”
 
 **Jak to wygląda w praktyce:**
-Klient rezerwuje wizytę i nie przychodzi (*no-show*) albo odwołuje ją godzinę wcześniej. Fryzjer ma wtedy pustą godzinę, na której nic nie zarobi. Teoretycznie salon może pobrać karę, ale w praktyce to często nie działa.
+Klient rezerwuje wizytę i nie przychodzi (*no-show*) albo odwołuje ją godzinę wcześniej. Fryzjer ma wtedy pustą godzinę, na której nic nie zarobi. Salon może ustawić karę za nieobecność, ale nie odzyskuje dzięki niej straconego czasu, a samą karę klient może jeszcze podważyć.
 
 **Co piszą salony:**
-- Fryzjerka z USA (Reddit, 10.2025): ***86% jej nieobecnych klientów nie zostało obciążonych karą***, w samym tym roku straciła ponad 2000 dolarów. Powód: klient mógł **usunąć kartę z aplikacji przed wizytą** i karę nie było z czego pobrać.
-- Booksy **samo potwierdziło ten problem**: dopiero 10.08.2026 wprowadziło zmianę, po której karty nie da się usunąć, gdy jest przypisana do aktywnej rezerwacji.
-- Gdy kara jednak zostanie pobrana, klient może zgłosić w banku jej zwrot. Salon traci wtedy pieniądze i płaci Booksy jeszcze **20 dolarów opłaty za spór** (Reddit, 09.2026).
+- Gdy kara zostanie pobrana, klient może zgłosić w banku jej zwrot. Salon traci wtedy pieniądze i płaci Booksy jeszcze **20 dolarów opłaty za spór** (Reddit, 09.2026).
 - Inny salon (Reddit, 06.2025): system pozwolił **dwóm osobom zarezerwować ten sam termin**.
 
 **Ile to kosztuje:** jeden z postów na Reddicie wylicza, że salon z 40 wizytami tygodniowo, średnią ceną 85 dolarów i 15% nieobecności traci **ok. 31 tys. dolarów rocznie**.
@@ -172,7 +170,7 @@ Nazwa od razu mówi, co nas wyróżnia: zwolnione terminy nie marnują się, tyl
 1. **Booksy** to polska aplikacja do rezerwacji wizyt, lider w Polsce. Program jest oceniany dobrze (Capterra 4,4), firma słabo (Trustpilot 3,0). Ludzie lubią aplikację, ale narzekają na pieniądze i support.
 2. **Mocne strony:** wyszukiwarka i program dla salonu w jednym (efekt sieci), rezerwacja 24/7 z automatycznymi przypomnieniami, opinie tylko od osób po prawdziwej wizycie.
 3. **Problem klienta:** odwołuje wizytę i traci zadatek, często nie wiedząc dlaczego. Zwroty są ręczne i trwają długo.
-4. **Problem salonu:** klienci nie przychodzą, a kary nie działają. Jedna fryzjerka podaje, że 86% nieobecności nie zostało obciążonych, bo klient mógł usunąć kartę. Booksy naprawiło to dopiero w sierpniu 2026.
+4. **Problem salonu:** klienci nie przychodzą albo odwołują w ostatniej chwili, więc fotel stoi pusty. Kara nie zapełni grafiku, a klient może ją jeszcze podważyć w banku (salon płaci wtedy 20 dolarów opłaty za spór). Przy 15% nieobecności salon traci nawet ok. 31 tys. dolarów rocznie.
 5. **Nasz pomysł, „Szybka Zamiana”:** gdy ktoś odwołuje, system sam proponuje termin kolejnym osobom z listy oczekujących (każda ma 15 minut na decyzję). Jeśli ktoś przejmie termin, odwołujący dostaje zadatek z powrotem. Zyskują wszyscy: salon ma pełny grafik, klient nie traci pieniędzy, a osoba z kolejki dostaje termin.
 6. **Ciekawostka:** Booksy ma już wszystkie przykładowe usprawnienia z treści zadania, łącznie z listą oczekujących. Dlatego nasz pomysł to nie „lista oczekujących”, tylko **automatyczna kolejka powiązana ze zwrotem zadatku**, czego Booksy nie robi.
 
@@ -180,7 +178,6 @@ Nazwa od razu mówi, co nas wyróżnia: zwolnione terminy nie marnują się, tyl
 
 ## Źródła
 - Booksy Biz, lista funkcji: https://biz.booksy.com/pl-pl/funkcje
-- Booksy, zmiana w opłatach za odwołanie (10.08.2026): https://biz.booksy.com/whats-new/fixed-cancellation-fees-now-more-reliable
 - Booksy, jak działają opinie: https://biz.booksy.com/blog/how-booksy-reviews-work
 - Booksy Boost: https://biz.booksy.com/pl-pl/blog/booksy-boost-bez-tajemnic
 - Cennik Booksy (artykuł firmy konkurencyjnej, 08.2026): https://meetergo.com/pl/blog/booksy-cennik
