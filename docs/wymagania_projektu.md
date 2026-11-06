@@ -20,7 +20,7 @@
 |---|---|---|
 | minimum 2 mocne strony Booksy | punkt 1.2: 3 mocne strony | spełnione |
 | minimum 2 luki po stronie klienta i salonu | punkt 1.3: klient: zadatek i blokada opinii; salon: prowizja i późne odwołania | spełnione |
-| minimum jedno usprawnienie z uzasadnieniem | punkty 1.4 i 1.5: Szybka Zamiana, Prowizja z limitem i dowodem | spełnione |
+| minimum jedno usprawnienie z uzasadnieniem | punkty 1.4 i 1.5: Szybka Zamiana, Prowizja z limitem i dowodem, Potwierdzona obecność | spełnione |
 | co pominięto i dlaczego | punkt 1.6 | spełnione |
 | nazwa produktu | punkt 1.7: Zwolnione | spełnione |
 | usprawnienie wpływa na system | punkty 1.4 i 1.5 oraz rozdział 2 | spełnione |
@@ -32,12 +32,12 @@ Slajd można czytać jako 2 luki łącznie albo po 2 na każdą stronę. Rozdzia
 
 | Wymaganie z PDF-a | Gdzie to mamy | Stan |
 |---|---|---|
-| funkcje, interakcje i reakcje systemu | punkt 2.1: WF-01 do WF-23 | spełnione |
+| funkcje, interakcje i reakcje systemu | punkt 2.1: WF-01 do WF-29 | spełnione |
 | scenariusze dla najważniejszych wymagań | punkt 2.1 | spełnione |
 | wymagania obejmujące usprawnienia | punkt 2.3 | spełnione |
 | ID, aktor i opis przy każdym wymaganiu | punkt 2.1 | spełnione |
 | wszyscy aktorzy z tabeli | punkt „Aktorzy”, w tym Administrator: WF-16, WF-20, WF-23 | spełnione |
-| obszary wymagań niefunkcjonalnych z liczbami | punkt 2.2: NF-01 do NF-12 | spełnione |
+| obszary wymagań niefunkcjonalnych z liczbami | punkt 2.2: NF-01 do NF-14 | spełnione |
 
 ## Terminy
 

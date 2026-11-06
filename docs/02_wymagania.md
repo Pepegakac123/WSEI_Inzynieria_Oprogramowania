@@ -1,6 +1,6 @@
 # Rozdział 2. Wymagania systemowe
 
-> Stan na 06.11.2026. Wymagania opisują aplikację z rozdziału 1, z usprawnieniami „Szybka Zamiana” i „Prowizja z limitem i dowodem”. Wartości liczbowe to nasze założenia projektowe.
+> Stan na 06.11.2026. Wymagania opisują aplikację z rozdziału 1, z usprawnieniami „Szybka Zamiana”, „Prowizja z limitem i dowodem” i „Potwierdzona obecność”. Wartości liczbowe to nasze założenia projektowe.
 
 ## Aktorzy
 
@@ -217,9 +217,10 @@
 
 **Scenariusze alternatywne:**
 - **1a. Klient nie przyszedł:** pracownik oznacza nieobecność, a zadatek zostaje u salonu. System nie nalicza prowizji.
+- **1b. Klient zeskanował kod QR:** system nie pozwala oznaczyć nieobecności.
 - **3a. Warunki prowizji nie są spełnione:** system nie nalicza prowizji.
 
-**Warunki poprawności:** RB-04, RB-21, RB-22, RB-23.
+**Warunki poprawności:** RB-04, RB-21, RB-22, RB-23, RB-28.
 
 ### WF-12. Wyszukiwanie salonów
 
@@ -369,6 +370,92 @@
 
 **Opis:** administrator nadaje i odbiera uprawnienia kont oraz zmienia ustawienia systemu, np. stawki abonamentu i prowizji.
 
+### WF-24. Pytanie przed wizytą
+
+**Aktor:** Klient, System
+
+**Opis:** 2 godziny przed wizytą system pyta klienta, czy nadal przyjdzie.
+
+**Scenariusz podstawowy:**
+1. System wysyła pytanie „Nadal będziesz?”.
+2. Klient klika „Będę”.
+3. System zapisuje odpowiedź i pokazuje ją pracownikowi.
+
+**Scenariusze alternatywne:**
+- **1a. Wizyta powstała mniej niż 2 h przed terminem:** system nie wysyła pytania.
+- **2a. Klient klika „Nie dam rady”:** system przechodzi do WF-02 i rozlicza wizytę jak późne odwołanie.
+- **2b. Klient nie odpowiada:** wizyta zostaje bez zmian.
+
+**Warunki poprawności:** RB-31.
+
+### WF-25. Potwierdzenie obecności kodem QR
+
+**Aktor:** Klient
+
+**Opis:** klient skanuje kod QR w salonie, a system zapisuje, że klient był na miejscu.
+
+**Scenariusz podstawowy:**
+1. Klient otwiera wizytę i wybiera „Zeskanuj kod”.
+2. Klient skanuje kod QR salonu.
+3. System sprawdza kod, czas i odległość od salonu.
+4. System zapisuje potwierdzenie obecności i pokazuje je pracownikowi.
+
+**Scenariusze alternatywne:**
+- **3a. Kod należy do innego salonu:** system pokazuje błąd i niczego nie zapisuje.
+- **3b. Skan jest poza czasem albo dalej niż 200 m od salonu:** system pokazuje powód i niczego nie zapisuje.
+- **3c. Klient nie zgadza się na sprawdzenie lokalizacji:** system nie zapisuje skanu, a wizyta odbywa się normalnie.
+- **4a. Salon oznaczył już nieobecność:** system usuwa to oznaczenie.
+
+**Warunki poprawności:** RB-27, RB-28.
+
+### WF-26. Sprzeciw „Byłem”
+
+**Aktor:** Klient
+
+**Opis:** klient bez skanu sprzeciwia się oznaczeniu go jako nieobecnego.
+
+**Scenariusz podstawowy:**
+1. System powiadamia klienta o oznaczeniu nieobecności.
+2. Klient klika „Byłem”.
+3. System zapisuje sprzeciw i nie liczy tej nieobecności do licznika.
+
+**Scenariusze alternatywne:**
+- **2a. Minęło 48 h:** system nie przyjmuje sprzeciwu.
+- **2b. Klient zgłosił już sprzeciw w ciągu ostatnich 6 miesięcy:** system nie przyjmuje sprzeciwu i podaje powód.
+
+**Warunki poprawności:** RB-29.
+
+### WF-27. Licznik nieobecności
+
+**Aktor:** System
+
+**Opis:** system liczy nieobecności klienta i po przekroczeniu progu wymaga od niego zadatku.
+
+**Scenariusz podstawowy:**
+1. System zapisuje nieobecność klienta.
+2. System sprawdza liczbę nieobecności z ostatnich 6 miesięcy.
+3. Po drugiej nieobecności system włącza wymóg zadatku na 3 miesiące i powiadamia klienta.
+
+**Scenariusze alternatywne:**
+- **1a. Klient zgłosił skuteczny sprzeciw:** nieobecność nie jest liczona.
+- **3a. Salon wymaga wyższego zadatku:** obowiązuje wyższa kwota.
+
+**Warunki poprawności:** RB-30.
+
+### WF-28. Kod QR salonu
+
+**Aktor:** Właściciel
+
+**Opis:** właściciel pobiera kod QR swojego salonu i umieszcza go w widocznym miejscu.
+
+### WF-29. Ocena wizyty
+
+**Aktor:** Klient
+
+**Opis:** klient ocenia wizytę, która się odbyła.
+
+**Warunki poprawności:** RB-32.
+
 ---
 
 ### Reguły biznesowe
@@ -396,11 +483,17 @@
 | RB-19 | Opłata za przygotowanie zostaje u salonu tylko wtedy, gdy salon oznaczył pracę jako wykonaną przed odwołaniem. W przeciwnym razie wraca do klienta. |
 | RB-20 | Przy przełożeniu w darmowym czasie płatności przechodzą na nowy termin. Po czasie zadatek jest rozliczany jak przy odwołaniu, a opłata za przygotowanie przechodzi na nowy termin. |
 | RB-21 | Prowizja wynosi 10% netto ceny pierwszej wizyty, najmniej 5 zł i najwyżej 30 zł netto. Podstawą jest cena z chwili rezerwacji. |
-| RB-22 | Prowizja powstaje tylko wtedy, gdy spełnione są trzy warunki: klient przeszedł z wyników wyszukiwania prosto do rezerwacji w czasie do 60 minut, nie ma go w bazie salonu ani wcześniejszej wizyty w tym salonie, a wizyta została oznaczona jako odbyta. |
+| RB-22 | Prowizja powstaje tylko wtedy, gdy spełnione są trzy warunki: klient przeszedł z wyników wyszukiwania prosto do rezerwacji w czasie do 60 minut, nie ma go w bazie salonu ani wcześniejszej wizyty w tym salonie, a wizyta się odbyła, czyli pracownik oznaczył ją jako odbytą albo klient zeskanował kod QR. |
 | RB-23 | Każda prowizja ma zapisany dowód: datę rezerwacji, wyszukiwanie i czas przejścia do rezerwacji. Bez dowodu system nie nalicza prowizji. |
 | RB-24 | Właściciel może podważyć prowizję przez 30 dni od jej naliczenia. Gdy wykaże wcześniejszą wizytę klienta, prowizja jest cofana. |
 | RB-25 | Zgłoszenie salonu musi zawierać nazwę, adres, NIP i dane właściciela. NIP i dane właściciela muszą zgadzać się z wpisem w CEIDG albo KRS. |
 | RB-26 | Salon jest widoczny w wyszukiwarce i przyjmuje rezerwacje dopiero po zatwierdzeniu przez administratora. |
+| RB-27 | Skan kodu QR jest ważny od 30 minut przed wizytą do jej planowanego końca i tylko w odległości do 200 m od salonu. System zapisuje wynik sprawdzenia, a nie lokalizację. |
+| RB-28 | Skan potwierdza, że wizyta się odbyła. Po skanie nie można oznaczyć nieobecności, a wcześniejsze oznaczenie jest usuwane. |
+| RB-29 | Klient bez skanu może zgłosić sprzeciw „Byłem” przez 48 h od oznaczenia nieobecności, najwyżej raz na 6 miesięcy. Sprzeciw wyłącza tę nieobecność z licznika, ale nie zwraca zadatku, nie daje prawa do oceny i nie tworzy prowizji. |
+| RB-30 | Po 2 nieobecnościach w ciągu 6 miesięcy klient przez 3 miesiące wpłaca przy każdej rezerwacji zadatek w wysokości 20% ceny wizyty albo wyższy, jeśli wymaga go salon. Salon nie widzi licznika. |
+| RB-31 | Pytanie „Nadal będziesz?” system wysyła 2 h przed wizytą, jeśli wizyta powstała wcześniej. |
+| RB-32 | Ocenę można wystawić tylko po wizycie, która się odbyła. |
 
 ---
 
@@ -420,15 +513,17 @@
 | NF-10 | czas od prośby klienta o usunięcie konta do usunięcia lub anonimizacji jego danych osobowych | każda prośba, poza danymi, które trzeba zachować z powodów prawnych, np. rozliczeń | najwyżej 30 dni | test automatyczny i raport miesięczny |
 | NF-11 | liczba równoczesnych użytkowników obsługiwanych bez utraty jakości | ruch rosnący przez 30 minut | 1000 użytkowników, wolne terminy poniżej 1000 ms dla 95% zapytań, najwyżej 0,5% błędnych żądań | raport z testu obciążeniowego |
 | NF-12 | pokrycie kodu rezerwacji i rozliczeń testami automatycznymi | każde wydanie | co najmniej 80% | raport pokrycia z automatycznego budowania |
+| NF-13 | liczba zapisanych lokalizacji klientów | baza danych i logi po skanach kodu QR | 0 | przegląd bazy danych i logów przed wydaniem |
+| NF-14 | czas od skanu kodu QR do potwierdzenia obecności | 200 równoczesnych skanów | poniżej 2 s dla 95% skanów | raport percentyli z testu obciążeniowego |
 
 **Obszary z zadania projektowego:**
 
 | Obszar | Wymagania |
 |---|---|
-| Wydajność | NF-01, NF-02, NF-04 |
+| Wydajność | NF-01, NF-02, NF-04, NF-14 |
 | Skalowalność | NF-11 |
 | Ergonomia interfejsu | NF-07 |
-| Bezpieczeństwo i dane osobowe | NF-08, NF-10 |
+| Bezpieczeństwo i dane osobowe | NF-08, NF-10, NF-13 |
 | Niezawodność | NF-03, NF-05, NF-06, NF-09 |
 | Standardy jakości | NF-12 |
 
@@ -443,3 +538,4 @@
 | Szybka Zamiana: zadatek na kolejną wizytę | WF-02, WF-07, WF-08, WF-14, WF-15, RB-08, RB-12, RB-13, RB-16, RB-20, NF-06 |
 | Zaliczka za projekt | WF-07, WF-15, WF-17, RB-19, RB-20 |
 | Prowizja z limitem i dowodem | WF-11, WF-12, WF-13, WF-16, WF-19, RB-14, RB-15, RB-21, RB-22, RB-23, RB-24, NF-09 |
+| Potwierdzona obecność | WF-11, WF-24, WF-25, WF-26, WF-27, WF-28, WF-29, RB-22, RB-27, RB-28, RB-29, RB-30, RB-31, RB-32, NF-13, NF-14 |

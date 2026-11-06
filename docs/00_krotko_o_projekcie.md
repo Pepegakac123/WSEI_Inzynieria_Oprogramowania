@@ -96,6 +96,24 @@ Przy każdej prowizji salon widzi dowód: datę, czego klient szukał i jak dosz
 
 W wyszukiwarce nadal nie ma płatnej promocji. Wyniki zależą od usługi, odległości, wolnych terminów i oceny. Opłaty operatora płatności zostają, bo to koszt bramki, a nie nasza prowizja.
 
+### 4. Potwierdzona obecność
+
+Jeden przycisk „nieobecny” decyduje dziś o zadatku, prowizji i prawie do oceny. Dlatego dodajemy cztery zasady:
+
+1. **Pytanie przed wizytą.** 2 godziny przed wizytą klient dostaje pytanie „Nadal będziesz?”. Opcja „Nie dam rady” działa jak późne odwołanie, a termin od razu trafia do kolejki.
+2. **Kod QR w salonie.** Klient skanuje go po przyjściu. Skan jest ważny od 30 minut przed wizytą do jej końca i tylko do 200 m od salonu.
+3. **Sprzeciw „Byłem”.** Klient bez skanu, oznaczony jako nieobecny, ma 48 h na sprzeciw. Dzięki temu ta nieobecność nie liczy się do licznika.
+4. **Licznik nieobecności.** Po 2 nieobecnościach w ciągu 6 miesięcy klient przez 3 miesiące wpłaca przy każdej rezerwacji zadatek w wysokości 20% ceny.
+
+| Czy klient zeskanował kod? | Co oznaczył salon | Co się dzieje |
+|---|---|---|
+| tak | odbyta | wizyta się odbyła |
+| tak | nieobecny | skan wygrywa, wizyta się odbyła |
+| nie | odbyta | wizyta się odbyła, bo skan nie jest obowiązkowy |
+| nie | nieobecny | nieobecność, ale klient może kliknąć „Byłem” |
+
+**Przykład:** Julia przychodzi na wizytę i skanuje kod. Jest niezadowolona, a salon oznacza ją jako nieobecną. Skan wygrywa, więc wizyta się odbyła i Julia może wystawić ocenę.
+
 ## Pytania i przypadki brzegowe
 
 ### Zadatek i kwota na wizytę
@@ -159,7 +177,7 @@ Wizyta z zadatkiem zostaje. Przy wizycie bez zadatku kolejka rusza 12 h przed wi
 Nie prosimy o potwierdzenie, bo sama rezerwacja jest świeża.
 
 **Co jeśli ktoś kliknie „Będę” i nie przyjdzie?**
-To zwykły no-show. Kolejka nie ma kiedy ruszyć, a zadatek zostaje u salonu. Potwierdzenie zmniejsza takie sytuacje, ale ich nie usuwa.
+Dostanie jeszcze pytanie „Nadal będziesz?” 2 godziny przed wizytą. Jeśli nie odpowie i nie przyjdzie, zadatek zostaje u salonu, a nieobecność trafia do licznika. Pusta godzina zostaje, więc ograniczamy takie sytuacje, ale ich nie usuwamy.
 
 ### Salon i tatuaże
 
@@ -214,13 +232,45 @@ Nie. Liczymy ją od ceny z chwili rezerwacji, więc zmiana wizyty po fakcie nic 
 Prowizji nie ma, bo wizyta się nie odbyła.
 
 **Czy salon może oznaczyć klienta jako nieobecnego, żeby nie płacić?**
-Może i to słaba strona modelu. Przy najwyżej 30 zł taka sztuczka opłaca się dużo mniej niż przy 250 zł, ale nie znika. Dopiero potwierdzanie obecności kodem QR rozwiązałoby to do końca.
+Nie, jeśli klient zeskanował kod QR, bo skan ma pierwszeństwo. Bez skanu jest to możliwe i to słaba strona modelu, ale przy najwyżej 30 zł opłaca się dużo mniej niż przy 250 zł.
 
 **Czy salon może zapłacić za wyższą pozycję?**
 Nie. Płatności salonu nie wpływają na wyniki wyszukiwania.
 
 **Czy abonament nie odstraszy małych salonów?**
 Może, ale jest niższy niż w Booksy. Nasze stawki to założenia, które trzeba by sprawdzić na prawdziwych kosztach aplikacji i rozmowach z salonami.
+
+### Potwierdzona obecność
+
+**Czy skan kodu jest obowiązkowy?**
+Nie. Wizyta odbywa się normalnie, a pracownik oznacza ją jako odbytą. Skan chroni klienta na wypadek sporu.
+
+**Co jeśli klient ma rozładowany telefon?**
+Korzysta z usługi normalnie. Gdy salon oznaczy nieobecność, może później kliknąć „Byłem”.
+
+**Czy można zeskanować zdjęcie kodu z domu?**
+Nie, bo aplikacja sprawdza, czy klient jest do 200 m od salonu.
+
+**Czy zapisujemy lokalizację klienta?**
+Nie. Sprawdzamy ją tylko w chwili skanu i zapisujemy sam wynik: tak albo nie.
+
+**Co jeśli klient spóźni się na wizytę?**
+Skan działa do końca planowanej wizyty, nawet jeśli salon oznaczył już nieobecność. Czy salon wtedy obsłuży klienta, zależy od salonu.
+
+**Co daje „Byłem” bez skanu?**
+Tylko to, że nieobecność nie liczy się do licznika. Zadatek zostaje u salonu, a klient nie może wystawić oceny, bo nie da się ustalić, kto ma rację.
+
+**Czy można klikać „Byłem” za każdym razem?**
+Nie. Bez skanu można to zrobić raz na 6 miesięcy.
+
+**Czy salon widzi, że klient ma nieobecności?**
+Nie. Widzi tylko wymaganą płatność, bo historia klienta z innych salonów nie jest jego sprawą.
+
+**Co jeśli klient ma zadatek od salonu wyższy niż 20%?**
+Obowiązuje wyższa kwota.
+
+**Co jeśli salon ukryje kod?**
+Klient zostaje przy sprzeciwie „Byłem”. To słaba strona rozwiązania.
 
 ### Czego nie obiecujemy
 
