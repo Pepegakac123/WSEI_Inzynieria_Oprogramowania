@@ -112,14 +112,16 @@ Budujemy własną aplikację do rezerwacji, podobną do Booksy. Roboczo nazywamy
 
 ### Usprawnienie 1: Szybka Zamiana
 
-> **Gdy zwalnia się termin, aplikacja sama szuka na niego osoby, a zadatek odwołującego nie przepada, tylko zostaje na jego kolejną wizytę.**
+> **Gdy zwalnia się termin, aplikacja sama szuka na niego osoby, a zadatek odwołującego nie przepada, tylko zamienia się w kupon na jego kolejną wizytę.**
 
 **Jak to działa w 4 krokach**
 
 1. **Dzień przed wizytą klient klika „Będę”.** Dzięki temu salon wcześniej wie, czy wizyta jest pewna.
 2. **Gdy klient odwołuje, widzi skutki.** Aplikacja pokazuje przed potwierdzeniem, co stanie się z jego zadatkiem.
 3. **Aplikacja proponuje termin po kolei.** Oferta idzie do jednej osoby z listy oczekujących, a termin czeka tylko na nią. Brak odpowiedzi oznacza, że oferta idzie do następnej osoby.
-4. **Termin przejęty, zadatek zostaje na kolejną wizytę.** Nowa osoba wpłaca własny zadatek. Odwołujący dostaje kwotę do wykorzystania w tym salonie przez 3 miesiące.
+4. **Termin przejęty, klient dostaje kupon.** Nowa osoba wpłaca własny zadatek. Odwołujący dostaje w aplikacji kupon o wartości swojego zadatku i przez 3 miesiące może odliczyć go od ceny kolejnej wizyty w tym salonie.
+
+**Czym jest kupon:** to zapisana w aplikacji kwota, a nie gotówka ani zwrot na konto. Salon zatrzymuje wpłacone pieniądze, a przy kolejnej wizycie klient płaci odpowiednio mniej.
 
 Jeśli nikt nie przejmie terminu, wraca on do puli wolnych terminów, a zadatek zostaje u salonu zgodnie z jego zasadami.
 
@@ -127,10 +129,10 @@ Jeśli nikt nie przejmie terminu, wraca on do puli wolnych terminów, a zadatek 
 
 Barber Tomek ma w piątek o 17:00 wizytę z Kamilem. Kamil wpłacił 30 zł zadatku. Darmowe odwołanie jest możliwe do 24 h przed wizytą. Kasia i Marek są na liście oczekujących, Kasia zapisała się pierwsza.
 
-1. W czwartek wieczorem Kamil odwołuje wizytę. Widzi komunikat: *„Jeśli ktoś przejmie Twój termin, 30 zł zostanie na Twoją kolejną wizytę. Jeśli nie, zadatek przepada.”*
+1. W czwartek wieczorem Kamil odwołuje wizytę. Widzi komunikat: *„Jeśli ktoś przejmie Twój termin, dostaniesz kupon na 30 zł na kolejną wizytę. Jeśli nie, zadatek przepada.”*
 2. Kasia dostaje ofertę i ma 15 minut. Nie odpowiada.
 3. Oferta idzie do Marka. Marek klika „Przyjmuję” i wpłaca 30 zł zadatku.
-4. Kamil ma 30 zł na kolejną wizytę u Tomka. Gdy wróci na strzyżenie za 100 zł, zapłaci 70 zł.
+4. Kamil dostaje kupon na 30 zł na kolejną wizytę u Tomka. Gdy wróci na strzyżenie za 100 zł, zapłaci 70 zł.
 
 **Co jeśli klient nie kliknie „Będę”?**
 
@@ -170,9 +172,9 @@ Tatuażyści biorą pieniądze za projekt, zanim klient usiądzie na fotelu. Dla
 | Część | Za co jest | Co się z nią dzieje przy odwołaniu po czasie |
 |---|---|---|
 | **Opłata za przygotowanie** | praca przed wizytą, np. projekt | zostaje u salonu, jeśli praca jest wykonana |
-| **Zadatek za termin** | ochrona przed pustym terminem | zostaje na kolejną wizytę, jeśli ktoś przejmie termin |
+| **Zadatek za termin** | ochrona przed pustym terminem | zamienia się w kupon, jeśli ktoś przejmie termin |
 
-Przykład: Ola wpłaca 200 zł za projekt i 100 zł za termin. Odwołuje po czasie, a ktoś przejmuje termin. 100 zł zostaje jej na kolejną wizytę, a 200 zł zostaje u tatuażystki za wykonany projekt. Salon, który nie robi nic przed wizytą, ustawia tylko zadatek za termin.
+Przykład: Ola wpłaca 200 zł za projekt i 100 zł za termin. Odwołuje po czasie, a ktoś przejmuje termin. Dostaje kupon na 100 zł na kolejną wizytę, a 200 zł zostaje u tatuażystki za wykonany projekt. Salon, który nie robi nic przed wizytą, ustawia tylko zadatek za termin.
 
 > **Uwaga o nazwach:** w tym dokumencie „zadatek” znaczy po prostu pieniądze za termin. Prawnie zadatek i zaliczka to różne rzeczy (art. 394 Kodeksu cywilnego reguluje zadatek), a zaliczka co do zasady podlega zwrotowi. Dlatego część za projekt nazywamy opłatą za przygotowanie. W prawdziwym produkcie nazwy i regulamin musiałby sprawdzić prawnik.
 
@@ -305,14 +307,14 @@ Julia przychodzi na wizytę i skanuje kod. Jest niezadowolona, a salon oznacza j
 | Kto dostaje ofertę terminu? | wszyscy z listy naraz, SMS z linkiem | **po kolei jedna osoba** |
 | Czy termin czeka? | nie, „kto pierwszy, ten lepszy” | **tak, z czasem zależnym od pory odwołania** |
 | Na co się zapisuję? | na dzień lub zakres dat | na **okno czasowe** i pracownika |
-| Co z zadatkiem odwołującego? | decyduje salon | **zostaje na kolejną wizytę, jeśli termin został przejęty** |
+| Co z zadatkiem odwołującego? | decyduje salon | **zamienia się w kupon na kolejną wizytę, jeśli termin został przejęty** |
 | Praca przed wizytą | jedna przedpłata | **osobno opłata za przygotowanie i zadatek za termin** |
 | Prowizja za nowego klienta | do 45% netto pierwszej wizyty, najwyżej 250 zł | **10% netto, najwyżej 30 zł** |
 | Dowód, skąd przyszedł klient | salonowi trudno to sprawdzić | **widoczny przy każdej prowizji** |
 | Kto decyduje o nieobecności? | salon | **salon, ale skan kodu QR przez klienta ma pierwszeństwo** |
 | Płatna promocja w wyszukiwarce | Boost | **brak** |
 
-Samo proponowanie terminu po kolei mają też inne systemy, np. Fresha, Vagaro i Zenoti. Nie twierdzimy, że wymyśliliśmy kolejkę. Naszym rozwiązaniem jest połączenie jej z potwierdzaniem wizyty i zadatkiem na kolejną wizytę.
+Samo proponowanie terminu po kolei mają też inne systemy, np. Fresha, Vagaro i Zenoti. Nie twierdzimy, że wymyśliliśmy kolejkę. Naszym rozwiązaniem jest połączenie jej z potwierdzaniem wizyty i kuponem na kolejną wizytę.
 
 ### Czego usprawnienia NIE rozwiązują
 
@@ -322,7 +324,7 @@ Klient może kliknąć „Będę” i mimo to nie przyjść. Pytanie 2 godziny p
 - jaki % odwołanych terminów udało się zapełnić z kolejki,
 - ile średnio trwa zapełnienie terminu,
 - jaki % wizyt klienci potwierdzają przed terminem,
-- jaki % klientów z kwotą na kolejną wizytę wraca do salonu,
+- jaki % klientów z kuponem wraca do salonu,
 - jaki % wizyt ma potwierdzoną obecność kodem QR,
 - jak często klienci zgłaszają sprzeciw „Byłem”.
 
@@ -330,11 +332,11 @@ Klient może kliknąć „Będę” i mimo to nie przyjść. Pytanie 2 godziny p
 
 | Rozdział | Co dzięki nim dodajemy |
 |---|---|
-| 2. Wymagania | potwierdzanie wizyty, lista oczekujących z oknem czasowym, oferty z czasem zależnym od pory, kwota na kolejną wizytę, abonament, prowizja z limitem, dowód źródła klienta, podważenie prowizji, wyszukiwanie bez płatnej promocji, pytanie przed wizytą, kod QR, sprzeciw „Byłem”, licznik nieobecności, ocena wizyty |
-| 3.1 Przypadki użycia | „Potwierdź wizytę”, „Zapisz się na listę oczekujących”, „Przyjmij ofertę terminu”, „Odwołaj wizytę”, „Wykorzystaj kwotę na wizytę”, „Podważ prowizję”, „Zeskanuj kod QR”, „Zgłoś sprzeciw” |
+| 2. Wymagania | potwierdzanie wizyty, lista oczekujących z oknem czasowym, oferty z czasem zależnym od pory, kupon na kolejną wizytę, abonament, prowizja z limitem, dowód źródła klienta, podważenie prowizji, wyszukiwanie bez płatnej promocji, pytanie przed wizytą, kod QR, sprzeciw „Byłem”, licznik nieobecności, ocena wizyty |
+| 3.1 Przypadki użycia | „Potwierdź wizytę”, „Zapisz się na listę oczekujących”, „Przyjmij ofertę terminu”, „Odwołaj wizytę”, „Wykorzystaj kupon”, „Podważ prowizję”, „Zeskanuj kod QR”, „Zgłoś sprzeciw” |
 | 3.2 Diagram aktywności | rozgałęzienie: *czy ktoś czeka?* → oferta → *przyjął / minął czas?* → następna osoba / termin wraca do puli |
-| 4. Diagram klas | klasy `ListaOczekujacych`, `WpisNaLiscie`, `OfertaTerminu`, `PolitykaOdwolania`, `Platnosc`, `KwotaNaWizyte`, `Abonament`, `Prowizja`, `DowodZrodla`, `KodQR`, `PotwierdzenieObecnosci`, `Sprzeciw`, `LicznikNieobecnosci` |
-| 5. Ryzyka | dwie osoby akceptują w tej samej sekundzie, za dużo powiadomień, zapisywanie się „na zapas”, salony niechętne kwocie na kolejną wizytę, przychody niepokrywające kosztów, omijanie prowizji przez oznaczanie nieobecności, skanowanie kodu bez wejścia do salonu, ukrywanie kodu przez salon |
+| 4. Diagram klas | klasy `ListaOczekujacych`, `WpisNaLiscie`, `OfertaTerminu`, `PolitykaOdwolania`, `Platnosc`, `KuponNaWizyte`, `Abonament`, `Prowizja`, `DowodZrodla`, `KodQR`, `PotwierdzenieObecnosci`, `Sprzeciw`, `LicznikNieobecnosci` |
+| 5. Ryzyka | dwie osoby akceptują w tej samej sekundzie, za dużo powiadomień, zapisywanie się „na zapas”, salony niechętne kuponom, przychody niepokrywające kosztów, omijanie prowizji przez oznaczanie nieobecności, skanowanie kodu bez wejścia do salonu, ukrywanie kodu przez salon |
 | 6. Wzorce | **Observer** (zwolnienie terminu uruchamia kolejkę), **State** (oferta i wizyta), **Strategy** (zasady odwołania, czas oferty, naliczanie prowizji) |
 | 6.2 Testy | „oferta wygasła → aplikacja wysyła ją następnej osobie”; test błędu: „dwie osoby przyjmują ten sam termin” |
 
@@ -344,7 +346,7 @@ Klient może kliknąć „Będę” i mimo to nie przyjść. Pytanie 2 godziny p
 
 1. **Odpowiadają na najczęstsze skargi:** prowizja to największa skarga salonów, a zadatki to największa skarga klientów. Salonom przeszkadza nie tylko jej wysokość, ale też brak dowodu, skąd przyszedł klient, dlatego rozwiązujemy obie sprawy. Kod QR odpowiada też na skargi na blokowanie opinii.
 2. **Pomagają obu stronom:** żadne nie opiera się na zabraniu pieniędzy jednej stronie, żeby dać je drugiej. Salon płaci mniej, a my nadal zarabiamy na klientach, których mu przyprowadzamy.
-3. **Działają z BLIK-iem i Google Pay:** kwota na kolejną wizytę jest zapisana w aplikacji, więc nie potrzebuje zwrotu ani blokady na karcie.
+3. **Działają z BLIK-iem i Google Pay:** kupon jest zapisany w aplikacji, więc nie potrzebuje zwrotu ani blokady na karcie.
 4. **Zmieniają działanie systemu:** dotykają rezerwacji, wyszukiwania, powiadomień i rozliczeń.
 5. **Uzupełniają się:** kod QR uszczelnia zadatek, prowizję i oceny, bo wszystkie zależą od tego, czy wizyta się odbyła.
 
@@ -363,7 +365,7 @@ Booksy ma bardzo dużo funkcji. Żeby projekt był wykonalny, skupiamy się na r
 | **Integracje z Instagramem, Facebookiem, Google** | źródło klienta śledzimy tylko w naszej wyszukiwarce, a wszystko spoza niej nie daje prowizji |
 | **Moderacja opinii** | wymaga osobnego procesu; modelujemy tylko ocenę wizyty |
 | **Wiele krajów, języków i walut** | zakładamy tylko Polskę, żeby nie mnożyć zasad i przepisów |
-| **Szczegóły prawne:** regulaminy, skutki zadatku i zaliczki, kwota po zamknięciu salonu | w prawdziwym produkcie musiałby to ocenić prawnik |
+| **Szczegóły prawne:** regulaminy, skutki zadatku i zaliczki, kupon po zamknięciu salonu | w prawdziwym produkcie musiałby to ocenić prawnik |
 
 ---
 
@@ -381,7 +383,7 @@ Nazwa od razu mówi, co nas wyróżnia: zwolnione terminy nie marnują się, tyl
 2. **Mocne strony:** wyszukiwarka i program dla salonu w jednym (efekt sieci), rezerwacja 24/7 z przypomnieniami, opinie tylko po prawdziwej wizycie.
 3. **Problem klienta:** odwołuje po czasie i traci zadatek, nawet gdy termin od razu zajmie ktoś inny.
 4. **Problemy salonu:** prowizja do 45% netto za nowego klienta to największa skarga, także w Polsce. Do tego późne odwołania i nieobecności.
-5. **Szybka Zamiana:** klient potwierdza wizytę dzień wcześniej. Gdy termin się zwolni, proponujemy go po kolei osobom z listy. Jeśli ktoś go weźmie, zadatek zostaje na kolejną wizytę.
+5. **Szybka Zamiana:** klient potwierdza wizytę dzień wcześniej. Gdy termin się zwolni, proponujemy go po kolei osobom z listy. Jeśli ktoś go weźmie, odwołujący dostaje kupon o wartości zadatku na kolejną wizytę.
 6. **Prowizja z limitem i dowodem:** salon płaci niższy abonament, a za nowego klienta z naszej wyszukiwarki 10% pierwszej wizyty, najwyżej 30 zł. Przy każdej prowizji widzi dowód, skąd klient przyszedł. Wyszukiwarka nie ma płatnej promocji.
 7. **Zaliczka za projekt:** opłata za wykonaną pracę zostaje u salonu, a zadatek za termin działa jak wyżej.
 8. **Potwierdzona obecność:** 2 godziny przed wizytą pytamy „Nadal będziesz?”. Klient skanuje kod QR w salonie, a skan ma pierwszeństwo przed oznaczeniem nieobecności. Po 2 nieobecnościach w 6 miesięcy klient wpłaca zadatek przy każdej rezerwacji.

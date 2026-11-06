@@ -8,7 +8,7 @@ Pełna analiza jest w [rozdziale 1](01_analiza_i_usprawnienia.md), a dokładne z
 
 > Masz wizytę u fryzjera i wpłacasz 50 zł zadatku. Dzień wcześniej wypada Ci coś ważnego. Odwołujesz i 50 zł przepada, choć godzinę później ktoś inny bierze ten termin. Salon też nie ma lekko: klienci nie przychodzą, a za nowego klienta z Booksy oddaje nawet 45% ceny pierwszej wizyty.
 >
-> My zrobilibyśmy to inaczej. Dzień przed wizytą klikasz „Będę”. Gdy odwołasz, sami proponujemy termin kolejnym osobom z listy oczekujących. Jeśli ktoś go weźmie, Twój zadatek zostaje na następną wizytę. A salon płaci niższy abonament, za nowego klienta z naszej wyszukiwarki oddaje najwyżej 30 zł i zawsze widzi dowód, skąd ten klient przyszedł. Gdy przyjdziesz na wizytę, skanujesz kod w salonie, więc nikt nie oznaczy Cię jako nieobecnego.
+> My zrobilibyśmy to inaczej. Dzień przed wizytą klikasz „Będę”. Gdy odwołasz, sami proponujemy termin kolejnym osobom z listy oczekujących. Jeśli ktoś go weźmie, dostajesz kupon o wartości zadatku na następną wizytę. A salon płaci niższy abonament, za nowego klienta z naszej wyszukiwarki oddaje najwyżej 30 zł i zawsze widzi dowód, skąd ten klient przyszedł. Gdy przyjdziesz na wizytę, skanujesz kod w salonie, więc nikt nie oznaczy Cię jako nieobecnego.
 >
 > Salon ma pełny grafik i niższe rachunki, a Ty nie tracisz pieniędzy za termin, który ktoś przejął.
 
@@ -33,9 +33,9 @@ Działa w czterech krokach:
 1. **Potwierdzenie.** Dzień przed wizytą klient klika „Będę”, więc salon wcześniej wie, czy wizyta jest pewna.
 2. **Jasne skutki.** Przy odwołaniu klient widzi, co stanie się z jego pieniędzmi, zanim potwierdzi.
 3. **Kolejka.** Wolny termin dostaje po kolei jedna osoba z listy oczekujących i termin czeka tylko na nią.
-4. **Zadatek na kolejną wizytę.** Gdy ktoś przejmie termin po późnym odwołaniu, zadatek zostaje jako kwota do wykorzystania w tym salonie przez 3 miesiące.
+4. **Kupon na kolejną wizytę.** Gdy ktoś przejmie termin po późnym odwołaniu, klient dostaje w aplikacji kupon o wartości swojego zadatku. Przez 3 miesiące może odliczyć go od ceny kolejnej wizyty w tym salonie.
 
-**Przykład:** Kamil ma wizytę u barbera Tomka w piątek o 17:00 i wpłacił 30 zł. W czwartek wieczorem odwołuje po czasie. Kasia z listy ma 15 minut, ale nie odpowiada. Marek przyjmuje termin i wpłaca własne 30 zł. Kamil ma 30 zł na kolejną wizytę, więc za strzyżenie za 100 zł zapłaci 70 zł.
+**Przykład:** Kamil ma wizytę u barbera Tomka w piątek o 17:00 i wpłacił 30 zł. W czwartek wieczorem odwołuje po czasie. Kasia z listy ma 15 minut, ale nie odpowiada. Marek przyjmuje termin i wpłaca własne 30 zł. Kamil dostaje kupon na 30 zł, więc za kolejne strzyżenie za 100 zł zapłaci 70 zł.
 
 **Czas na decyzję:**
 
@@ -47,7 +47,7 @@ Działa w czterech krokach:
 
 Między 22:00 a 7:00 nie wysyłamy ofert. Kolejka rusza o 7:00.
 
-**Czym to się różni od Booksy:** Booksy wysyła SMS do wszystkich od razu, termin na nikogo nie czeka, a o zwrocie zadatku decyduje salon. Samo proponowanie po kolei mają też inne systemy, np. Fresha, Vagaro i Zenoti. Naszym rozwiązaniem jest połączenie kolejki z potwierdzeniem i zadatkiem na kolejną wizytę.
+**Czym to się różni od Booksy:** Booksy wysyła SMS do wszystkich od razu, termin na nikogo nie czeka, a o zwrocie zadatku decyduje salon. Samo proponowanie po kolei mają też inne systemy, np. Fresha, Vagaro i Zenoti. Naszym rozwiązaniem jest połączenie kolejki z potwierdzeniem i kuponem na kolejną wizytę.
 
 ### 2. Zaliczka za projekt
 
@@ -56,7 +56,7 @@ Tatuażysta rysuje projekt przed wizytą, więc część pracy jest już wykonan
 | Część | Za co | Co przy późnym odwołaniu |
 |---|---|---|
 | **Opłata za przygotowanie** | praca przed wizytą, np. projekt | zostaje u salonu, jeśli praca jest wykonana |
-| **Zadatek za termin** | ochrona przed pustym terminem | zostaje na kolejną wizytę, jeśli ktoś przejmie termin |
+| **Zadatek za termin** | ochrona przed pustym terminem | zamienia się w kupon, jeśli ktoś przejmie termin |
 
 Obie części są odliczane od ceny, jeśli wizyta się odbędzie. Fryzjer czy barber ustawia tylko zadatek za termin. Salon sam decyduje, czy używa opłaty za przygotowanie.
 
@@ -67,7 +67,7 @@ Obie części są odliczane od ceny, jeśli wizyta się odbędzie. Fryzjer czy b
 | Ola przychodzi | odliczone od ceny | odliczone od ceny, zostaje 500 zł do zapłaty |
 | odwołuje w darmowym czasie, projekt gotowy | zostaje u tatuażystki | wraca |
 | odwołuje w darmowym czasie, projekt nierozpoczęty | wraca | wraca |
-| odwołuje po czasie, ktoś przejmuje termin | zostaje u tatuażystki | zostaje na kolejną wizytę |
+| odwołuje po czasie, ktoś przejmuje termin | zostaje u tatuażystki | zamienia się w kupon na kolejną wizytę |
 | odwołuje po czasie, nikt nie przejmuje | zostaje u tatuażystki | zostaje u tatuażystki |
 | przekłada w darmowym czasie | przechodzi na nowy termin | przechodzi na nowy termin |
 | tatuażystka odwołuje | wraca albo przechodzi na nowy termin, wybiera Ola | wraca albo przechodzi na nowy termin, wybiera Ola |
@@ -118,18 +118,21 @@ Jeden przycisk „nieobecny” decyduje dziś o zadatku, prowizji i prawie do oc
 
 ## Pytania i przypadki brzegowe
 
-### Zadatek i kwota na wizytę
+### Zadatek i kupon
+
+**Czym jest kupon?**
+To zapisana w aplikacji kwota, którą klient odlicza od ceny kolejnej wizyty w tym samym salonie. Nie jest to gotówka ani zwrot na konto. Salon zatrzymuje wpłacone pieniądze, a przy kolejnej wizycie klient płaci odpowiednio mniej.
 
 **Czy klient dostaje gotówkę z powrotem?**
-Przy odwołaniu w darmowym czasie tak. Po czasie nie: dostaje kwotę na kolejną wizytę, jeśli ktoś przejął termin.
+Przy odwołaniu w darmowym czasie tak. Po czasie nie: dostaje kupon na kolejną wizytę, jeśli ktoś przejął termin.
 
 **Dlaczego nie zwykły zwrot pieniędzy?**
-Bo salon by na tym tylko stracił i nie miałby powodu tego włączać. Kwota zatrzymuje pieniądze w salonie i daje klientowi powód, żeby wrócić.
+Bo salon by na tym tylko stracił i nie miałby powodu tego włączać. Kupon zatrzymuje pieniądze w salonie i daje klientowi powód, żeby wrócić.
 
-**Co jeśli klient nie wykorzysta kwoty?**
+**Co jeśli klient nie wykorzysta kuponu?**
 Po 3 miesiącach wygasa i pieniądze zostają u salonu.
 
-**Czy kwotę można oddać znajomemu albo wykorzystać w innym salonie?**
+**Czy kupon można oddać znajomemu albo wykorzystać w innym salonie?**
 Nie. Działa tylko dla tego klienta i w tym salonie.
 
 **Co jeśli termin przejmie ktoś spoza listy?**
@@ -139,16 +142,16 @@ Działa tak samo. Liczy się to, że termin został zapełniony.
 Termin uznajemy za przejęty, gdy nowa wizyta zajmuje co najmniej połowę zwolnionego czasu.
 
 **Co jeśli nowa osoba przyjmie termin, a potem nie przyjdzie?**
-Odwołujący zachowuje kwotę, bo termin został przejęty. Nowa osoba traci własny zadatek na zwykłych zasadach.
+Odwołujący zachowuje kupon, bo termin został przejęty. Nowa osoba traci własny zadatek na zwykłych zasadach.
 
-**Co jeśli klient odwoła wizytę opłaconą kwotą?**
-W darmowym czasie kwota wraca z pierwotną datą ważności. Po czasie działa jak zwykły zadatek.
+**Co jeśli klient odwoła wizytę opłaconą kuponem?**
+W darmowym czasie kupon wraca z pierwotną datą ważności. Po czasie działa jak zwykły zadatek.
 
-**Co jeśli salon się zamknie, a klient ma niewykorzystaną kwotę?**
-Tego nie modelujemy. Kwota jest zobowiązaniem salonu, więc prawdziwy produkt potrzebowałby tu regulaminu.
+**Co jeśli salon się zamknie, a klient ma niewykorzystany kupon?**
+Tego nie modelujemy. Kupon jest zobowiązaniem salonu, więc prawdziwy produkt potrzebowałby tu regulaminu.
 
 **Czy to działa z BLIK-iem i Google Pay?**
-Tak. Zadatek wpłaca się normalnie, a kwota jest zapisana w aplikacji.
+Tak. Zadatek wpłaca się normalnie, a kupon jest zapisany w aplikacji.
 
 **Czy salon musi brać zadatki?**
 Nie. Bez zadatku działają potwierdzenie i kolejka. Wyjątkiem jest klient z licznikiem nieobecności, który wpłaca zadatek także wtedy.

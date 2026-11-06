@@ -14,8 +14,8 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
   - [WF-04. Wysłanie oferty terminu](#wf-04-wysłanie-oferty-terminu) — *Szybka Zamiana*
   - [WF-05. Przyjęcie oferty terminu](#wf-05-przyjęcie-oferty-terminu) — *Szybka Zamiana*
   - [WF-06. Potwierdzenie wizyty „Będę”](#wf-06-potwierdzenie-wizyty-będę) — *Szybka Zamiana*
-  - [WF-07. Zadatek na kolejną wizytę](#wf-07-zadatek-na-kolejną-wizytę) — *Szybka Zamiana*
-  - [WF-08. Wykorzystanie kwoty na wizytę](#wf-08-wykorzystanie-kwoty-na-wizytę) — *Szybka Zamiana*
+  - [WF-07. Kupon za przejęty termin](#wf-07-kupon-za-przejęty-termin) — *Szybka Zamiana*
+  - [WF-08. Wykorzystanie kuponu](#wf-08-wykorzystanie-kuponu) — *Szybka Zamiana*
   - [WF-09. Usługi i cennik](#wf-09-usługi-i-cennik)
   - [WF-10. Grafik pracownika](#wf-10-grafik-pracownika)
   - [WF-11. Zakończenie wizyty](#wf-11-zakończenie-wizyty)
@@ -89,7 +89,7 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 **Scenariusz podstawowy:**
 1. Klient wybiera wizytę i opcję „Odwołaj”.
 2. System sprawdza, czy klient mieści się w czasie darmowego odwołania.
-3. System pokazuje kwotę i dalszy los zadatku.
+3. System pokazuje wysokość zadatku oraz to, czy klient dostanie zwrot, dostanie kupon, czy straci zadatek.
 4. Klient potwierdza odwołanie.
 5. System zwalnia termin i uruchamia kolejkę (WF-04).
 6. System wysyła potwierdzenie klientowi i powiadamia pracownika.
@@ -179,16 +179,16 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 
 **Warunki poprawności:** RB-07.
 
-### WF-07. Zadatek na kolejną wizytę
+### WF-07. Kupon za przejęty termin
 
 **Aktor:** System
 
-**Opis:** gdy termin odwołany po czasie zostanie przejęty, zadatek staje się kwotą do wykorzystania.
+**Opis:** gdy termin odwołany po czasie zostanie przejęty, klient dostaje kupon o wartości swojego zadatku. Kupon to zapisana w aplikacji kwota, którą klient odlicza od ceny kolejnej wizyty w tym samym salonie.
 
 **Scenariusz podstawowy:**
 1. System wykrywa, że odwołany po czasie termin ma nową wizytę.
-2. System tworzy kwotę na wizytę w wysokości zadatku za termin.
-3. System powiadamia klienta o kwocie i dacie ważności.
+2. System tworzy kupon o wartości zadatku za termin, ważny 3 miesiące.
+3. System powiadamia klienta o wartości kuponu i dacie ważności.
 
 **Scenariusze alternatywne:**
 - **1a. Nikt nie przejął terminu do jego rozpoczęcia:** zadatek zostaje u salonu.
@@ -196,21 +196,21 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 
 **Warunki poprawności:** RB-08, RB-12, RB-13, RB-19.
 
-### WF-08. Wykorzystanie kwoty na wizytę
+### WF-08. Wykorzystanie kuponu
 
 **Aktor:** Klient
 
-**Opis:** klient wykorzystuje kwotę przy rezerwacji w tym samym salonie.
+**Opis:** klient odlicza kupon od płatności przy rezerwacji w tym samym salonie.
 
 **Scenariusz podstawowy:**
-1. Podczas rezerwacji system pokazuje dostępną kwotę.
+1. Podczas rezerwacji system pokazuje dostępny kupon i jego wartość.
 2. Klient decyduje, czy jej użyć.
-3. System odlicza kwotę od zadatku, a pozostałość od ceny wizyty.
+3. System odlicza wartość kuponu najpierw od zadatku, a pozostałą część od ceny wizyty.
 
 **Scenariusze alternatywne:**
-- **2a. Kwota wygasła:** system jej nie pokazuje.
-- **3a. Klient odwoła wizytę w darmowym czasie:** kwota wraca z pierwotną datą ważności.
-- **3b. Klient odwoła wizytę po czasie:** kwota jest rozliczana jak zwykły zadatek.
+- **2a. Kupon wygasł:** system go nie pokazuje.
+- **3a. Klient odwoła wizytę w darmowym czasie:** kupon wraca z pierwotną datą ważności.
+- **3b. Klient odwoła wizytę po czasie:** kupon jest rozliczany jak zwykły zadatek.
 
 **Warunki poprawności:** RB-12, RB-13.
 
@@ -253,7 +253,7 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 
 **Scenariusz podstawowy:**
 1. Pracownik wybiera wizytę i oznacza ją jako odbytą.
-2. System rozlicza zadatek i kwotę na wizytę z ceną usługi.
+2. System odlicza zadatek i kupon od ceny usługi.
 3. Jeśli spełnione są warunki prowizji, system ją nalicza i zapisuje dowód.
 
 **Scenariusze alternatywne:**
@@ -511,12 +511,12 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 | RB-05 | Zasady odwołania obowiązujące wizytę są ustalane w chwili rezerwacji. |
 | RB-06 | Czas na decyzję wynosi 15 minut, gdy do wizyty zostało ponad 6 h, oraz 5 minut przy 2–6 h. Poniżej 2 h oferta idzie do wszystkich bez wyłączności. |
 | RB-07 | Klient traci wizytę z powodu braku potwierdzenia tylko wtedy, gdy nie wpłacił zadatku i ktoś inny przyjął ofertę. |
-| RB-08 | Przy odwołaniu po czasie zadatek zamienia się w kwotę na wizytę tylko wtedy, gdy nowa wizyta innej osoby zajmuje co najmniej połowę zwolnionego czasu. |
+| RB-08 | Przy odwołaniu po czasie zadatek zamienia się w kupon tylko wtedy, gdy nowa wizyta innej osoby zajmuje co najmniej połowę zwolnionego czasu. |
 | RB-09 | Klient może mieć najwyżej 3 aktywne wpisy na listach oczekujących. |
 | RB-10 | Jeden termin danego pracownika może przyjąć tylko jedna osoba. |
 | RB-11 | Osoby z listy dostają ofertę według kolejności zapisu, a oferta musi pasować do okna czasowego, pracownika i długości usługi. |
-| RB-12 | Kwotę na wizytę można wykorzystać tylko w salonie, który ją wydał, przez 3 miesiące od jej powstania. |
-| RB-13 | Kwoty na wizytę nie można wypłacić ani przekazać innej osobie. |
+| RB-12 | Kupon można wykorzystać tylko w salonie, którego dotyczy, przez 3 miesiące od jego powstania. |
+| RB-13 | Kuponu nie można wypłacić ani przekazać innej osobie. |
 | RB-14 | Kolejność wyników wyszukiwania nie może zależeć od płatności salonu. |
 | RB-15 | Abonament wynosi 119 zł netto miesięcznie oraz 25 zł netto za każdego kolejnego pracownika. |
 | RB-16 | Gdy wizytę odwołuje salon, klient dostaje pełny zwrot płatności z góry albo przenosi je na nowy termin. |
@@ -548,7 +548,7 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 | NF-03 | liczba podwójnych rezerwacji tego samego terminu | 100 równoczesnych prób przyjęcia jednego terminu | 0, powstaje dokładnie 1 wizyta | test współbieżności przy każdym wydaniu |
 | NF-04 | dokładność wygaśnięcia oferty | 50 odwołań na minutę | oferta wygasa najpóźniej 30 s po upływie czasu | test automatyczny na zegarze testowym |
 | NF-05 | dostępność rezerwacji i odwołań | cały miesiąc, bez zaplanowanych prac | co najmniej 99,9% miesięcznie | monitoring zewnętrzny, raport miesięczny |
-| NF-06 | zgodność kwot na wizytę z płatnościami | codzienne rozliczenie wszystkich transakcji | 100% zgodnych wpisów | automatyczne porównanie z danymi bramki płatności |
+| NF-06 | zgodność kuponów z płatnościami | codzienne rozliczenie wszystkich transakcji | 100% zgodnych wpisów | automatyczne porównanie z danymi bramki płatności |
 | NF-07 | liczba kroków rezerwacji od ekranu głównego | nowy klient, aplikacja mobilna | najwyżej 4 kroki | test użyteczności na 5 osobach |
 | NF-08 | liczba numerów kart i kodów BLIK zapisanych przez system | baza danych i logi całej aplikacji | 0 | przegląd bazy danych i kodu przed wydaniem |
 | NF-09 | udział prowizji z zapisanym dowodem | wszystkie prowizje z danego miesiąca | 100% | automatyczny raport miesięczny |
@@ -577,7 +577,7 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 |---|---|
 | Szybka Zamiana: kolejka | WF-03, WF-04, WF-05, RB-06, RB-09, RB-10, RB-11, RB-17, RB-18, NF-02, NF-03, NF-04 |
 | Szybka Zamiana: potwierdzenie „Będę” | WF-06, RB-07 |
-| Szybka Zamiana: zadatek na kolejną wizytę | WF-02, WF-07, WF-08, WF-14, WF-15, RB-08, RB-12, RB-13, RB-16, RB-20, NF-06 |
+| Szybka Zamiana: kupon na kolejną wizytę | WF-02, WF-07, WF-08, WF-14, WF-15, RB-08, RB-12, RB-13, RB-16, RB-20, NF-06 |
 | Zaliczka za projekt | WF-07, WF-15, WF-17, RB-19, RB-20 |
 | Prowizja z limitem i dowodem | WF-11, WF-12, WF-13, WF-16, WF-19, RB-14, RB-15, RB-21, RB-22, RB-23, RB-24, NF-09 |
 | Potwierdzona obecność | WF-11, WF-24, WF-25, WF-26, WF-27, WF-28, WF-29, RB-22, RB-27, RB-28, RB-29, RB-30, RB-31, RB-32, NF-13, NF-14 |
