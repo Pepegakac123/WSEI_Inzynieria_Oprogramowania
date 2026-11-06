@@ -2,6 +2,47 @@
 
 > Stan na 06.11.2026. Wymagania opisują aplikację z rozdziału 1, z usprawnieniami „Szybka Zamiana”, „Prowizja z limitem i dowodem” i „Potwierdzona obecność”. Wartości liczbowe to nasze założenia projektowe.
 
+## Spis treści
+
+Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. Wymagania bez nazwy to podstawa z zadania projektowego.
+
+- [Aktorzy](#aktorzy)
+- [2.1. Wymagania funkcjonalne](#21-wymagania-funkcjonalne)
+  - [WF-01. Rezerwacja wizyty](#wf-01-rezerwacja-wizyty)
+  - [WF-02. Odwołanie wizyty](#wf-02-odwołanie-wizyty)
+  - [WF-03. Zapis na listę oczekujących](#wf-03-zapis-na-listę-oczekujących) — *Szybka Zamiana*
+  - [WF-04. Wysłanie oferty terminu](#wf-04-wysłanie-oferty-terminu) — *Szybka Zamiana*
+  - [WF-05. Przyjęcie oferty terminu](#wf-05-przyjęcie-oferty-terminu) — *Szybka Zamiana*
+  - [WF-06. Potwierdzenie wizyty „Będę”](#wf-06-potwierdzenie-wizyty-będę) — *Szybka Zamiana*
+  - [WF-07. Zadatek na kolejną wizytę](#wf-07-zadatek-na-kolejną-wizytę) — *Szybka Zamiana*
+  - [WF-08. Wykorzystanie kwoty na wizytę](#wf-08-wykorzystanie-kwoty-na-wizytę) — *Szybka Zamiana*
+  - [WF-09. Usługi i cennik](#wf-09-usługi-i-cennik)
+  - [WF-10. Grafik pracownika](#wf-10-grafik-pracownika)
+  - [WF-11. Zakończenie wizyty](#wf-11-zakończenie-wizyty)
+  - [WF-12. Wyszukiwanie salonów](#wf-12-wyszukiwanie-salonów)
+  - [WF-13. Abonament i prowizje salonu](#wf-13-abonament-i-prowizje-salonu) — *Prowizja z limitem i dowodem*
+  - [WF-14. Odwołanie wizyty przez salon](#wf-14-odwołanie-wizyty-przez-salon)
+  - [WF-15. Przełożenie wizyty](#wf-15-przełożenie-wizyty) — *Szybka Zamiana*
+  - [WF-16. Podważenie prowizji](#wf-16-podważenie-prowizji) — *Prowizja z limitem i dowodem*
+  - [WF-17. Zasady odwołań i płatności z góry](#wf-17-zasady-odwołań-i-płatności-z-góry)
+  - [WF-18. Konta pracowników](#wf-18-konta-pracowników)
+  - [WF-19. Import bazy klientów](#wf-19-import-bazy-klientów) — *Prowizja z limitem i dowodem*
+  - [WF-20. Zatwierdzenie salonu](#wf-20-zatwierdzenie-salonu)
+  - [WF-21. Rejestracja salonu](#wf-21-rejestracja-salonu)
+  - [WF-22. Przeglądanie swoich wizyt](#wf-22-przeglądanie-swoich-wizyt)
+  - [WF-23. Uprawnienia i konfiguracja](#wf-23-uprawnienia-i-konfiguracja)
+  - [WF-24. Pytanie przed wizytą](#wf-24-pytanie-przed-wizytą) — *Potwierdzona obecność*
+  - [WF-25. Potwierdzenie obecności kodem QR](#wf-25-potwierdzenie-obecności-kodem-qr) — *Potwierdzona obecność*
+  - [WF-26. Sprzeciw „Byłem”](#wf-26-sprzeciw-byłem) — *Potwierdzona obecność*
+  - [WF-27. Licznik nieobecności](#wf-27-licznik-nieobecności) — *Potwierdzona obecność*
+  - [WF-28. Kod QR salonu](#wf-28-kod-qr-salonu) — *Potwierdzona obecność*
+  - [WF-29. Ocena wizyty](#wf-29-ocena-wizyty) — *Potwierdzona obecność*
+  - [Reguły biznesowe](#reguły-biznesowe)
+- [2.2. Wymagania niefunkcjonalne](#22-wymagania-niefunkcjonalne)
+- [2.3. Powiązanie wymagań z usprawnieniami](#23-powiązanie-wymagań-z-usprawnieniami)
+
+---
+
 ## Aktorzy
 
 | Aktor | Kim jest |
