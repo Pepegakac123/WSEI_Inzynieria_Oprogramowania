@@ -4,21 +4,23 @@ Budujemy aplikację do rezerwowania wizyt u fryzjerów, barberów, kosmetyczek, 
 
 Pełna analiza jest w [rozdziale 1](01_analiza_i_usprawnienia.md), a dokładne zasady w [rozdziale 2](02_wymagania.md).
 
-## Wiadomość w windzie (ok. 50 sekund)
+## Wiadomość w windzie (ok. 1 minuty)
 
 > Masz wizytę u fryzjera i wpłacasz 50 zł zadatku. Dzień wcześniej wypada Ci coś ważnego. Odwołujesz i 50 zł przepada, choć godzinę później ktoś inny bierze ten termin. Salon też nie ma lekko: klienci nie przychodzą, a za nowego klienta z Booksy oddaje nawet 45% ceny pierwszej wizyty.
 >
-> My zrobilibyśmy to inaczej. Dzień przed wizytą klikasz „Będę”. Gdy odwołasz, sami proponujemy termin kolejnym osobom z listy oczekujących. Jeśli ktoś go weźmie, Twój zadatek zostaje na następną wizytę. A salon płaci niższy abonament, za nowego klienta z naszej wyszukiwarki oddaje najwyżej 30 zł i zawsze widzi dowód, skąd ten klient przyszedł.
+> My zrobilibyśmy to inaczej. Dzień przed wizytą klikasz „Będę”. Gdy odwołasz, sami proponujemy termin kolejnym osobom z listy oczekujących. Jeśli ktoś go weźmie, Twój zadatek zostaje na następną wizytę. A salon płaci niższy abonament, za nowego klienta z naszej wyszukiwarki oddaje najwyżej 30 zł i zawsze widzi dowód, skąd ten klient przyszedł. Gdy przyjdziesz na wizytę, skanujesz kod w salonie, więc nikt nie oznaczy Cię jako nieobecnego.
 >
 > Salon ma pełny grafik i niższe rachunki, a Ty nie tracisz pieniędzy za termin, który ktoś przejął.
 
 ## Jaki problem rozwiązujemy
 
-| Kto | Problem | Dowód |
-|---|---|---|
-| Klient | Odwołuje po czasie i traci zadatek, nawet gdy termin od razu zajmie ktoś inny. | największa kategoria skarg klientów (35 opinii, głównie spoza Polski) |
-| Salon | Oddaje prowizję za nowych klientów i nie może łatwo udowodnić, skąd przyszli. | największa skarga salonów (77 opinii, w tym 48 z Polski) |
-| Salon | Późne odwołania i nieobecności zostawiają pustą godzinę. | lista oczekujących w Booksy nie trzyma terminu dla nikogo |
+| Kto | Problem | Dowód | Co z tym robimy |
+|---|---|---|---|
+| Klient | Odwołuje po czasie i traci zadatek, nawet gdy termin od razu zajmie ktoś inny. | największa kategoria skarg klientów (35 opinii, głównie spoza Polski) | Szybka Zamiana |
+| Klient | Salon może oznaczyć go jako nieobecnego, co blokuje opinię. | 22 opinie, w tym 12 z Polski | Potwierdzona obecność |
+| Salon | Oddaje prowizję za nowych klientów i nie może łatwo udowodnić, skąd przyszli. | największa skarga salonów (77 opinii, w tym 48 z Polski) | Prowizja z limitem i dowodem |
+| Salon | Późne odwołania i nieobecności zostawiają pustą godzinę. | lista oczekujących w Booksy nie trzyma terminu dla nikogo | Szybka Zamiana i Potwierdzona obecność |
+| Salon | Praca przed wizytą, np. projekt tatuażu, nie mieści się w zwykłym zadatku. | przykładowe zasady studia tatuażu, a nie skargi z naszej próby | Zaliczka za projekt |
 
 Booksy sam pisze salonom, że przy późnym odwołaniu i zapełnieniu terminu z listy *„Zarabiasz dwukrotnie!”*. To dobrze pokazuje, po czyjej stronie jest dziś ten mechanizm.
 
@@ -100,7 +102,7 @@ W wyszukiwarce nadal nie ma płatnej promocji. Wyniki zależą od usługi, odleg
 
 Jeden przycisk „nieobecny” decyduje dziś o zadatku, prowizji i prawie do oceny. Dlatego dodajemy cztery zasady:
 
-1. **Pytanie przed wizytą.** 2 godziny przed wizytą klient dostaje pytanie „Nadal będziesz?”. Opcja „Nie dam rady” działa jak późne odwołanie, a termin od razu trafia do kolejki.
+1. **Pytanie przed wizytą.** 2 godziny przed wizytą klient dostaje pytanie „Nadal będziesz?”. Opcja „Nie dam rady” działa jak zwykłe odwołanie, według zasad salonu, a termin od razu trafia do kolejki.
 2. **Kod QR w salonie.** Klient skanuje go po przyjściu. Skan jest ważny od 30 minut przed wizytą do jej końca i tylko do 200 m od salonu.
 3. **Sprzeciw „Byłem”.** Klient bez skanu, oznaczony jako nieobecny, ma 48 h na sprzeciw. Dzięki temu ta nieobecność nie liczy się do licznika.
 4. **Licznik nieobecności.** Po 2 nieobecnościach w ciągu 6 miesięcy klient przez 3 miesiące wpłaca przy każdej rezerwacji zadatek w wysokości 20% ceny.
@@ -149,7 +151,7 @@ Tego nie modelujemy. Kwota jest zobowiązaniem salonu, więc prawdziwy produkt p
 Tak. Zadatek wpłaca się normalnie, a kwota jest zapisana w aplikacji.
 
 **Czy salon musi brać zadatki?**
-Nie. Bez zadatku działają potwierdzenie i kolejka.
+Nie. Bez zadatku działają potwierdzenie i kolejka. Wyjątkiem jest klient z licznikiem nieobecności, który wpłaca zadatek także wtedy.
 
 ### Kolejka
 
@@ -269,12 +271,15 @@ Nie. Widzi tylko wymaganą płatność, bo historia klienta z innych salonów ni
 **Co jeśli klient ma zadatek od salonu wyższy niż 20%?**
 Obowiązuje wyższa kwota.
 
+**Co jeśli klient zeskanował kod, a salon musi odwołać wizytę, np. przez awarię?**
+Salon odwołuje wizytę, a klient dostaje pełny zwrot. Wizyta się nie odbyła, więc prowizji nie ma.
+
 **Co jeśli salon ukryje kod?**
 Klient zostaje przy sprzeciwie „Byłem”. To słaba strona rozwiązania.
 
 ### Czego nie obiecujemy
 
-- Nie usuwamy no-show, tylko je ograniczamy.
+- Nie usuwamy nieobecności, tylko je ograniczamy.
 - Nie twierdzimy, że kolejka jest naszym wynalazkiem.
 - Nie twierdzimy, że wymyśliliśmy niską prowizję. Wyróżnia nas połączenie limitu i dowodu.
 - Korzyści dla salonu to założenia, które trzeba by sprawdzić na prawdziwych salonach.

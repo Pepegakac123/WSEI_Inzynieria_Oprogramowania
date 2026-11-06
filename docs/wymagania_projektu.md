@@ -24,6 +24,7 @@
 | co pominięto i dlaczego | punkt 1.6 | spełnione |
 | nazwa produktu | punkt 1.7: Zwolnione | spełnione |
 | usprawnienie wpływa na system | punkty 1.4 i 1.5 oraz rozdział 2 | spełnione |
+| minimum jeden dodatkowy obszar systemu | lista oczekujących, rozliczenia zadatku i prowizji, potwierdzanie obecności | spełnione |
 | usprawnienie widoczne w kolejnych rozdziałach | tabela w punkcie 1.4 | do pilnowania w rozdziałach 3–6 |
 
 Slajd można czytać jako 2 luki łącznie albo po 2 na każdą stronę. Rozdział 1 spełnia obie wersje.

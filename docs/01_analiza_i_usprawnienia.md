@@ -104,11 +104,11 @@ W Booksy to salon oznacza nieobecność. Klienci piszą, że w ten sposób bloku
 
 Budujemy własną aplikację do rezerwacji, podobną do Booksy. Roboczo nazywamy ją **Zwolnione** (punkt 1.7). Dodalibyśmy trzy usprawnienia:
 
-| Usprawnienie | Kierunek z zadania | Kogo dotyczy |
-|---|---|---|
-| **Szybka Zamiana** | rezerwacje last minute na wolne okienka, ograniczenie nieodwołanych nieobecności | klient i salon |
-| **Prowizja z limitem i dowodem** | nasza wersja kierunku „brak prowizji od wizyty” | salon |
-| **Potwierdzona obecność** | ograniczenie nieodwołanych nieobecności | klient i salon |
+| Usprawnienie | Jaki problem rozwiązuje | Kierunek z zadania | Kogo dotyczy |
+|---|---|---|---|
+| **Szybka Zamiana** | klient traci zadatek za przejęty termin, salon zostaje z pustą godziną | rezerwacje last minute na wolne okienka, ograniczenie nieodwołanych nieobecności | klient i salon |
+| **Prowizja z limitem i dowodem** | wysoka prowizja i brak dowodu, skąd przyszedł klient | nasza wersja kierunku „brak prowizji od wizyty” | salon |
+| **Potwierdzona obecność** | nieobecności, omijanie prowizji i blokada opinii | ograniczenie nieodwołanych nieobecności | klient i salon |
 
 ### Usprawnienie 1: Szybka Zamiana
 
@@ -259,7 +259,7 @@ Dziś jeden przycisk „nieobecny” decyduje o trzech rzeczach: czy zadatek prz
 
 **1. Pytanie przed wizytą**
 
-2 godziny przed wizytą klient dostaje pytanie „Nadal będziesz?” z opcją „Nie dam rady”. Kliknięcie działa jak późne odwołanie, ale termin od razu trafia do kolejki. Salon ma więc szansę go zapełnić, zamiast czekać na kogoś, kto nie przyjdzie.
+2 godziny przed wizytą klient dostaje pytanie „Nadal będziesz?” z opcją „Nie dam rady”. Kliknięcie działa jak zwykłe odwołanie, według zasad salonu, a termin od razu trafia do kolejki. Salon ma więc szansę go zapełnić, zamiast czekać na kogoś, kto nie przyjdzie.
 
 **2. Kod QR w salonie**
 
@@ -295,6 +295,7 @@ Julia przychodzi na wizytę i skanuje kod. Jest niezadowolona, a salon oznacza j
 - Klient może stać pod salonem, zeskanować kod i nie wejść, jeśli zna kod. Tego nie sprawdzamy.
 - Salon może ukryć wydrukowany kod. Wtedy zostaje sprzeciw „Byłem”, który nie rozstrzyga sporu.
 - Pierwsze dwie nieobecności bez zadatku nadal nic nie kosztują.
+- Pytanie przed wizytą to kolejne powiadomienie, a spam to już dziś częsta skarga klientów (19 opinii).
 - Liczby, np. 200 m, 48 h i 20%, to założenia zespołu.
 
 ### Czym to się różni od Booksy?
@@ -341,7 +342,7 @@ Klient może kliknąć „Będę” i mimo to nie przyjść. Pytanie 2 godziny p
 
 ## 1.5. Dlaczego te usprawnienia
 
-1. **Odpowiadają na najczęstsze skargi:** prowizja to największa skarga salonów, a zadatki to największa skarga klientów. Salonom przeszkadza nie tylko jej wysokość, ale też brak dowodu, skąd przyszedł klient, dlatego rozwiązujemy obie sprawy.
+1. **Odpowiadają na najczęstsze skargi:** prowizja to największa skarga salonów, a zadatki to największa skarga klientów. Salonom przeszkadza nie tylko jej wysokość, ale też brak dowodu, skąd przyszedł klient, dlatego rozwiązujemy obie sprawy. Kod QR odpowiada też na skargi na blokowanie opinii.
 2. **Pomagają obu stronom:** żadne nie opiera się na zabraniu pieniędzy jednej stronie, żeby dać je drugiej. Salon płaci mniej, a my nadal zarabiamy na klientach, których mu przyprowadzamy.
 3. **Działają z BLIK-iem i Google Pay:** kwota na kolejną wizytę jest zapisana w aplikacji, więc nie potrzebuje zwrotu ani blokady na karcie.
 4. **Zmieniają działanie systemu:** dotykają rezerwacji, wyszukiwania, powiadomień i rozliczeń.
@@ -360,7 +361,7 @@ Booksy ma bardzo dużo funkcji. Żeby projekt był wykonalny, skupiamy się na r
 | **Kasa, magazyn, raporty sprzedaży, wynagrodzenia** | to prowadzenie firmy, a nie rezerwowanie wizyt |
 | **Marketing:** kampanie SMS, promocje, karty podarunkowe i lojalnościowe | nie wpływa na nasze usprawnienia, a mocno powiększa system |
 | **Integracje z Instagramem, Facebookiem, Google** | źródło klienta śledzimy tylko w naszej wyszukiwarce, a wszystko spoza niej nie daje prowizji |
-| **Moderacja opinii** | wymaga osobnego procesu; modelujemy tylko ocenę salonu |
+| **Moderacja opinii** | wymaga osobnego procesu; modelujemy tylko ocenę wizyty |
 | **Wiele krajów, języków i walut** | zakładamy tylko Polskę, żeby nie mnożyć zasad i przepisów |
 | **Szczegóły prawne:** regulaminy, skutki zadatku i zaliczki, kwota po zamknięciu salonu | w prawdziwym produkcie musiałby to ocenić prawnik |
 
@@ -374,7 +375,7 @@ Nazwa od razu mówi, co nas wyróżnia: zwolnione terminy nie marnują się, tyl
 
 ---
 
-## Ściąga: co powiedzieć na zajęciach (ok. 2 minuty)
+## Ściąga: co powiedzieć na zajęciach (ok. 3 minuty)
 
 1. **Booksy** to polska aplikacja do rezerwacji wizyt, lider w Polsce. Program jest oceniany dobrze (Capterra 4,4), firma słabo (Trustpilot 2,9).
 2. **Mocne strony:** wyszukiwarka i program dla salonu w jednym (efekt sieci), rezerwacja 24/7 z przypomnieniami, opinie tylko po prawdziwej wizycie.

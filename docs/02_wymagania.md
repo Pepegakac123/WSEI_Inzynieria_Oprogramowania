@@ -271,6 +271,7 @@
 4. Klient wybiera zwrot płatności albo nowy termin.
 
 **Scenariusze alternatywne:**
+- **3a. Klient zeskanował już kod QR:** wizyta nie liczy się jako odbyta, a system nie nalicza prowizji.
 - **4a. Klient nie wybierze przez 48 h:** system zleca pełny zwrot.
 
 **Warunki poprawności:** RB-16.
@@ -383,7 +384,7 @@
 
 **Scenariusze alternatywne:**
 - **1a. Wizyta powstała mniej niż 2 h przed terminem:** system nie wysyła pytania.
-- **2a. Klient klika „Nie dam rady”:** system przechodzi do WF-02 i rozlicza wizytę jak późne odwołanie.
+- **2a. Klient klika „Nie dam rady”:** system przechodzi do WF-02.
 - **2b. Klient nie odpowiada:** wizyta zostaje bez zmian.
 
 **Warunki poprawności:** RB-31.
@@ -489,7 +490,7 @@
 | RB-25 | Zgłoszenie salonu musi zawierać nazwę, adres, NIP i dane właściciela. NIP i dane właściciela muszą zgadzać się z wpisem w CEIDG albo KRS. |
 | RB-26 | Salon jest widoczny w wyszukiwarce i przyjmuje rezerwacje dopiero po zatwierdzeniu przez administratora. |
 | RB-27 | Skan kodu QR jest ważny od 30 minut przed wizytą do jej planowanego końca i tylko w odległości do 200 m od salonu. System zapisuje wynik sprawdzenia, a nie lokalizację. |
-| RB-28 | Skan potwierdza, że wizyta się odbyła. Po skanie nie można oznaczyć nieobecności, a wcześniejsze oznaczenie jest usuwane. |
+| RB-28 | Skan potwierdza, że wizyta się odbyła. Po skanie nie można oznaczyć nieobecności, a wcześniejsze oznaczenie jest usuwane. Wyjątkiem jest wizyta odwołana przez salon. |
 | RB-29 | Klient bez skanu może zgłosić sprzeciw „Byłem” przez 48 h od oznaczenia nieobecności, najwyżej raz na 6 miesięcy. Sprzeciw wyłącza tę nieobecność z licznika, ale nie zwraca zadatku, nie daje prawa do oceny i nie tworzy prowizji. |
 | RB-30 | Po 2 nieobecnościach w ciągu 6 miesięcy klient przez 3 miesiące wpłaca przy każdej rezerwacji zadatek w wysokości 20% ceny wizyty albo wyższy, jeśli wymaga go salon. Salon nie widzi licznika. |
 | RB-31 | Pytanie „Nadal będziesz?” system wysyła 2 h przed wizytą, jeśli wizyta powstała wcześniej. |
@@ -504,7 +505,7 @@
 | NF-01 | czas wyznaczenia wolnych terminów dla salonu i usługi na 14 dni | 200 równoczesnych użytkowników | poniżej 500 ms dla 95% zapytań, po stronie serwera | raport percentyli z testu obciążeniowego |
 | NF-02 | czas od zwolnienia terminu do wysłania oferty | 50 odwołań na minutę | poniżej 60 s dla 99% ofert | logi zdarzeń z testu obciążeniowego |
 | NF-03 | liczba podwójnych rezerwacji tego samego terminu | 100 równoczesnych prób przyjęcia jednego terminu | 0, powstaje dokładnie 1 wizyta | test współbieżności przy każdym wydaniu |
-| NF-04 | dokładność wygaśnięcia oferty | normalne obciążenie | oferta wygasa najpóźniej 30 s po upływie czasu | test automatyczny na zegarze testowym |
+| NF-04 | dokładność wygaśnięcia oferty | 50 odwołań na minutę | oferta wygasa najpóźniej 30 s po upływie czasu | test automatyczny na zegarze testowym |
 | NF-05 | dostępność rezerwacji i odwołań | cały miesiąc, bez zaplanowanych prac | co najmniej 99,9% miesięcznie | monitoring zewnętrzny, raport miesięczny |
 | NF-06 | zgodność kwot na wizytę z płatnościami | codzienne rozliczenie wszystkich transakcji | 100% zgodnych wpisów | automatyczne porównanie z danymi bramki płatności |
 | NF-07 | liczba kroków rezerwacji od ekranu głównego | nowy klient, aplikacja mobilna | najwyżej 4 kroki | test użyteczności na 5 osobach |
