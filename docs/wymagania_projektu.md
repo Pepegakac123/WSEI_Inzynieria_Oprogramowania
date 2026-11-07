@@ -33,7 +33,7 @@ Slajd można czytać jako 2 luki łącznie albo po 2 na każdą stronę. Rozdzia
 
 | Wymaganie z PDF-a | Gdzie to mamy | Stan |
 |---|---|---|
-| funkcje, interakcje i reakcje systemu | punkt 2.1: WF-01 do WF-29 | spełnione |
+| funkcje, interakcje i reakcje systemu | punkt 2.1: WF-01 do WF-30 | spełnione |
 | scenariusze dla najważniejszych wymagań | punkt 2.1 | spełnione |
 | wymagania obejmujące usprawnienia | punkt 2.3 | spełnione |
 | ID, aktor i opis przy każdym wymaganiu | punkt 2.1 | spełnione |

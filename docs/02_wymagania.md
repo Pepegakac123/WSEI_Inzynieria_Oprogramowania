@@ -1,6 +1,6 @@
 # Rozdział 2. Wymagania systemowe
 
-> Stan na 06.11.2026. Wymagania opisują aplikację z rozdziału 1, z usprawnieniami „Szybka Zamiana”, „Prowizja z limitem i dowodem” i „Potwierdzona obecność”. Wartości liczbowe to nasze założenia projektowe.
+> Stan na 07.11.2026. Wymagania opisują aplikację z rozdziału 1, z usprawnieniami „Szybka Zamiana”, „Prowizja z limitem i dowodem” i „Potwierdzona obecność”. Wartości liczbowe to nasze założenia projektowe.
 
 ## Spis treści
 
@@ -37,6 +37,7 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
   - [WF-27. Licznik nieobecności](#wf-27-licznik-nieobecności) — *Potwierdzona obecność*
   - [WF-28. Kod QR salonu](#wf-28-kod-qr-salonu) — *Potwierdzona obecność*
   - [WF-29. Ocena wizyty](#wf-29-ocena-wizyty) — *Potwierdzona obecność*
+  - [WF-30. Utworzenie konta klienta](#wf-30-utworzenie-konta-klienta)
   - [Reguły biznesowe](#reguły-biznesowe)
 - [2.2. Wymagania niefunkcjonalne](#22-wymagania-niefunkcjonalne)
 - [2.3. Powiązanie wymagań z usprawnieniami](#23-powiązanie-wymagań-z-usprawnieniami)
@@ -402,9 +403,9 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 
 ### WF-22. Przeglądanie swoich wizyt
 
-**Aktor:** Klient
+**Aktor:** Klient, Pracownik
 
-**Opis:** klient widzi listę nadchodzących i minionych wizyt wraz z ich statusem.
+**Opis:** klient widzi listę swoich nadchodzących i minionych wizyt wraz z ich statusem, a pracownik wizyty, które wykonuje.
 
 ### WF-23. Uprawnienia i konfiguracja
 
@@ -497,6 +498,12 @@ Nazwa po myślniku oznacza nową funkcję wynikającą z naszego usprawnienia. W
 **Opis:** klient ocenia wizytę, która się odbyła.
 
 **Warunki poprawności:** RB-32.
+
+### WF-30. Utworzenie konta klienta
+
+**Aktor:** Klient
+
+**Opis:** klient zakłada konto, podając imię i numer telefonu. Konto jest potrzebne do rezerwacji, bo przypisane są do niego wizyty, kupony i licznik nieobecności.
 
 ---
 
