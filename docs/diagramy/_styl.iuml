@@ -1,0 +1,9 @@
+left to right direction
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontSize 18
+skinparam legendFontSize 16
+skinparam nodesep 35
+skinparam ranksep 60
+skinparam ArrowThickness 1.5
+skinparam packageStyle rectangle

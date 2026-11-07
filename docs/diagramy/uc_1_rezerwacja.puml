@@ -1,0 +1,29 @@
+@startuml uc_1_rezerwacja
+!include _styl.iuml
+actor "Klient" as Klient
+actor "Bramka\npłatności" as Bramka <<system>>
+actor "Dostawca\npowiadomień" as Dostawca <<system>>
+rectangle "Zwolnione: rezerwacja" {
+  usecase "UC-02\nWyszukaj salon" as UC02
+  usecase "UC-03\nZarezerwuj wizytę" as UC03
+  usecase "UC-07\nPrzyjmij ofertę terminu" as UC07
+  usecase "UC-06\nZapisz się na listę\noczekujących" as UC06
+  usecase "UC-09\nWykorzystaj kupon" as UC09
+  usecase "UC-15\nWyślij powiadomienie" as UC15
+}
+Klient -- UC02
+Klient -- UC03
+Klient -- UC07
+UC03 <.. UC06 : <<extend>>\ntylko gdy brak wolnych terminów
+UC03 <.. UC09 : <<extend>>\ntylko gdy klient ma ważny kupon
+UC03 ..> UC15 : <<include>>
+UC07 ..> UC15 : <<include>>
+UC15 -- Dostawca
+UC03 -[norank]- Bramka
+UC07 -[norank]- Bramka
+UC15 -[hidden]- Bramka
+
+legend bottom
+  **Jak czytać:**  linia ciągła = aktor bierze udział  |  «include» = zawsze wykonywane  |  «extend» = tylko gdy spełniony jest warunek
+endlegend
+@enduml

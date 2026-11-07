@@ -1,0 +1,28 @@
+@startuml uc_2_odwolanie
+!include _styl.iuml
+actor "Klient" as Klient
+actor "Dostawca\npowiadomień" as Dostawca <<system>>
+actor "Bramka\npłatności" as Bramka <<system>>
+rectangle "Zwolnione: odwołanie i potwierdzanie" {
+  usecase "UC-05\nPrzełóż wizytę" as UC05
+  usecase "UC-04\nOdwołaj wizytę" as UC04
+  usecase "UC-08\nPotwierdź wizytę" as UC08
+  usecase "UC-14\nZaproponuj termin\nkolejce" as UC14
+  usecase "UC-15\nWyślij powiadomienie" as UC15
+}
+Klient -- UC08
+Klient --- UC04
+Klient -- UC05
+UC08 <.. UC04 : <<extend>>\ntylko gdy „Nie przyjdę”
+UC05 ...> UC14 : <<include>>
+UC04 ..> UC14 : <<include>>
+UC14 ..> UC15 : <<include>>
+UC04 ...> UC15 : <<include>>
+UC15 -- Dostawca
+UC15 -[hidden]- Bramka
+UC04 -[norank]- Bramka
+
+legend bottom
+  **Jak czytać:**  linia ciągła = aktor bierze udział  |  «include» = zawsze wykonywane  |  «extend» = tylko gdy spełniony jest warunek
+endlegend
+@enduml
