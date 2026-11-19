@@ -1,49 +1,63 @@
 # Notatki do diagramów rozdziału 3
 
-Stan na 07.11.2026. Rozdział 3 jest w trakcie. Wzorzec do naśladowania: `uc_2_odwolanie`.
+Stan na 19.11.2026. Rozdział 3 jest gotowy: tekst w `docs/03_przypadki_uzycia_i_aktywnosc.md`.
 
 ## Stan prac
 
 | Etap | Stan |
 |---|---|
 | Lista przypadków użycia i relacji | uzgodniona |
-| Styl diagramów | uzgodniony, wzorzec `uc_2_odwolanie` |
-| Diagram 1 Rezerwacja | próbka, linie do Bramki wychodzą dołem ramki i wymagają poprawy |
-| Diagram 2 Odwołanie i potwierdzanie | gotowy |
-| Diagramy 3–6 i mapa całości | do zrobienia |
-| Szare tło dla usprawnień | do zrobienia na wszystkich diagramach |
-| Tabela aktorów, główne scenariusze, opis pod diagramami | do zrobienia w `docs/03_przypadki_uzycia_i_aktywnosc.md` |
-| 3.2 Diagram aktywności | do zrobienia |
-| Status rozdziału w `README.md` | zaktualizować po ukończeniu |
+| Narzędzie | własny generator `ucgen.py` zamiast PlantUML |
+| Diagramy 1–6 i mapa całości | gotowe, bez przecięć linii |
+| Szare tło dla usprawnień | gotowe na wszystkich diagramach |
+| Tabela aktorów, główne scenariusze, opis pod diagramami | gotowe w `docs/03_przypadki_uzycia_i_aktywnosc.md` |
+| 3.2 Diagramy aktywności | gotowe: `ad_1_rezerwacja`, `ad_2_szybka_zamiana` (generator `adgen.py`) |
+| Status rozdziału w `README.md` | zaktualizowany |
+
+## Pliki
+
+| Plik | Diagram |
+|---|---|
+| `uc_0_mapa.py` | mapa całości: aktorzy i sześć obszarów |
+| `uc_1_rezerwacja.py` | 1. Rezerwacja |
+| `uc_2_odwolanie.py` | 2. Odwołanie i potwierdzanie |
+| `uc_3_konto.py` | 3. Konto, obecność i ocena |
+| `uc_4_salon.py` | 4. Praca salonu |
+| `uc_5_uruchomienie.py` | 5. Uruchomienie salonu |
+| `uc_6_rozliczenia.py` | 6. Rozliczenia i administracja |
+
+| `ad_1_rezerwacja.py` | 3.2a. Diagram aktywności: rezerwacja wizyty |
+| `ad_2_szybka_zamiana.py` | 3.2b. Diagram aktywności: odwołanie i Szybka Zamiana |
+
+Każdy skrypt tworzy PNG o tej samej nazwie. Renderowanie wszystkich: `for f in uc_*.py ad_*.py; do python3 $f; done`. Diagramy aktywności używają `adgen.py`: tory to kolumny, węzły ustawiamy przez tor i wysokość, a `flow(..., via=[...], guard="[warunek]")` rysuje strzałkę z warunkiem. Wymaga Pythona z Pillow, `rsvg-convert` i czcionki Noto Sans.
+
+## Dlaczego własny generator
+
+PlantUML i D2 same układają elementy, więc linie się wyginają, przecinają albo łamią pod kątem prostym. W `ucgen.py` pozycję każdego elementu podajemy sami, a generator przycina linie do krawędzi elips, rysuje grot, etykietę z białym tłem i legendę z rysunkami.
 
 ## Zasady czytelności
 
 1. Najwyżej 7 przypadków na diagram, podział tematyczny.
 2. Format poziomy. Wysoki obraz jest zmniejszany do wysokości ekranu i tekst staje się nieczytelny.
 3. Zero przecięć linii. Sprawdzać to na renderze, a nie zakładać.
-4. Styl z `_styl.iuml`: czarno-biały, czcionka 18, grubsze linie.
-5. Nazwa przypadku w dwóch liniach: numer, potem cel.
+4. Styl czarno-biały, Noto Sans 18, linie 2 px.
+5. W elipsie numer przypadku pogrubiony, pod nim cel.
 6. Na każdym diagramie legenda „Jak czytać”.
 7. Warunek przy `extend` prostymi słowami: „tylko gdy…”.
 8. Przypadki z usprawnień mają szare tło, a podstawowe białe.
 9. Pod każdym diagramem w dokumencie krótki opis zdaniami, zrozumiały bez znajomości UML.
 
-## Jak ułożyć diagram w PlantUML
+## Jak ułożyć diagram w `ucgen.py`
 
-- Renderowanie: `plantuml -tpng plik.puml`, potem `-tsvg`. Nazwa pliku wynikowego pochodzi z `@startuml nazwa`.
-- `@startuml` zaczyna każdy diagram, a `!include _styl.iuml` dodaje styl.
-- `UC08 <.. UC04` stawia przypadek bazowy w lewej kolumnie, a rozszerzenie po prawej. Tak dostajemy krótką, prostą strzałkę `extend`.
-- Liczba kresek ustawia odległość: `Klient --- UC04` to dwie kolumny, `UC05 ...> UC14` trzy.
-- `-[norank]-` rysuje linię, która nie wpływa na układ. `-[hidden]-` wpływa na układ, ale nie jest rysowana.
-- Kolejność aktorów ma znaczenie. W `uc_2_odwolanie` Dostawca jest zadeklarowany przed Bramką, żeby ich linie się nie przecinały.
+- `d.usecase(klucz, x, y, "UC-xx", "Nazwa", improved=True)`: elipsa, rozmiar liczony z tekstu.
+- `d.actor(klucz, x, y, "Nazwa", system=True)`: figurka, przy systemach dopisek «system».
+- `d.assoc(a, b, via=[(x, y), ...])`: linia aktora; `via` dodaje punkty pośrednie z zaokrąglonymi narożnikami.
+- `d.dep(src, dst, "include" lub "extend", "tylko gdy…", label_at=0.5)`: przerywana strzałka od `src` do `dst`. `label_at` przesuwa etykietę wzdłuż linii.
+- `d.area(...)`, `d.point(...)`, `d.note(...)`: obszary, niewidoczne punkty zaczepienia i dopiski na mapie.
 
-Czego nie robić:
-- jednokropkowego `.>` z etykietą, bo strzałka w tej samej kolumnie zatacza łuki przez inne linie;
-- łańcuchów `-[hidden]>` do ustawiania kolejności, bo Graphviz ich nie pilnuje;
-- `!pragma layout smetana`, bo daje te same kolizje;
-- `!pragma layout elk`, bo nie działa na tej instalacji.
+Pułapka: gdy dwa przypadki łączą się z tymi samymi trzema elementami (np. UC-03 i UC-07 z Klientem, Bramką i UC-15), przecięcia nie da się uniknąć na płaszczyźnie (graf K3,3). Wtedy jedna linia musi obejść aktora, jak linie do Bramki na diagramie 1, albo przypadek trzeba przenieść na inny diagram.
 
-Jeśli przecięcia nie da się usunąć, przenieść przypadek na inny diagram. Dotyczy to UC-03 i UC-07, które łączą się z tymi samymi trzema elementami. W razie potrzeby UC-07 zmienia diagram.
+Na mapie Bramka i Dostawca łączą się z ramką systemu, a nie z każdym obszarem, z tego samego powodu. Pod nazwą jest dopisek, których obszarów dotyczą.
 
 ## Podział na diagramy
 
@@ -111,11 +125,3 @@ Mapa całości pokazuje tylko aktorów i sześć obszarów, bez `include` i `ext
 - Bramka łączy się bezpośrednio z przypadkami, które pobierają lub zwracają pieniądze.
 - Odwołanie przez salon nie uruchamia kolejki, bo WF-14 tego nie przewiduje.
 - Logowania nie modelujemy.
-
-## Do 3.2
-
-Zalecany proces to rezerwacja wizyty, a usprawnienie musi być widoczne także na diagramie aktywności. Punkt 1.4 zapowiada rozgałęzienie: *czy ktoś czeka?* → oferta → *przyjął / minął czas?* → następna osoba / termin wraca do puli. Do rozstrzygnięcia: jeden diagram czy dwa, rezerwacja oraz odwołanie z kolejką.
-
-W diagramie aktywności PlantUML trzeba podawać tor jawnie w każdej gałęzi, np. `|System|` po `else`. Inaczej krok trafia do toru poprzedniego uczestnika.
-
-`uc_klient` i `uc_salon` to stare, nieczytelne wersje. Nie są w repo i można je usunąć po zrobieniu sześciu diagramów.

@@ -10,7 +10,7 @@ Krótka wersja i wiadomość w windzie: [Krótko o projekcie](docs/00_krotko_o_p
 |---|---|---|---|
 | 1 | [Analiza Booksy i usprawnienia](docs/01_analiza_i_usprawnienia.md) | 03.10.2026 | ✅ |
 | 2 | [Wymagania systemowe](docs/02_wymagania.md) | 17.10.2026 | ✅ |
-| 3 | Przypadki użycia, diagram aktywności | 07.11.2026 | ⏳ |
+| 3 | [Przypadki użycia, diagram aktywności](docs/03_przypadki_uzycia_i_aktywnosc.md) | 07.11.2026 | ✅ |
 | 4 | Diagram klas | 21.11.2026 | ⏳ |
 | 5 | Harmonogram i ryzyka | 05.12.2026 | ⏳ |
 | 6 | Wzorce i strategia testowania | 19.12.2026 | ⏳ |

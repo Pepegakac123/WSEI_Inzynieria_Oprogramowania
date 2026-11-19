@@ -40,6 +40,24 @@ Slajd można czytać jako 2 luki łącznie albo po 2 na każdą stronę. Rozdzia
 | wszyscy aktorzy z tabeli | punkt „Aktorzy”, w tym Administrator: WF-16, WF-20, WF-23 | spełnione |
 | obszary wymagań niefunkcjonalnych z liczbami | punkt 2.2: NF-01 do NF-14 | spełnione |
 
+## Zgodność rozdziału 3
+
+| Wymaganie z PDF-a | Gdzie to mamy | Stan |
+|---|---|---|
+| opis aktorów i głównych scenariuszy | punkty „Aktorzy” i „Główne scenariusze” | spełnione |
+| tabela aktorów z zakresem odpowiedzialności | punkt „Aktorzy” | spełnione |
+| aktorzy klienta, usługodawcy, moderacji i systemy zewnętrzne | Klient; Pracownik i Właściciel; Administrator; Bramka płatności i Dostawca powiadomień | spełnione |
+| relacje include i extend | diagramy 1, 2, 4 i 6 oraz lista relacji | spełnione |
+| diagram czytelny po wydruku | 6 diagramów tematycznych i mapa, najwyżej 7 przypadków na diagram, bez przecięć linii | spełnione |
+| diagram aktywności, zalecana rezerwacja | diagram 3.2a | spełnione |
+| węzeł początkowy i końcowy | 3.2a i 3.2b | spełnione |
+| decyzje z opisanymi warunkami | 3.2a i 3.2b, tabele decyzji pod diagramami | spełnione |
+| tory dla uczestników | 3.2a: 3 tory, 3.2b: 4 tory | spełnione |
+| przebiegi bez powodzenia | rezygnacja, zajęty termin, nieudana płatność, pusta kolejka | spełnione |
+| usprawnienie widoczne w rozdziale | szare przypadki i kroki, diagram 3.2b z kolejką | spełnione |
+
+Zadanie mówi o „diagramie” przypadków użycia w liczbie pojedynczej. Warto zapytać prowadzącego, czy podział na mapę i sześć diagramów mu odpowiada.
+
 ## Terminy
 
 | # | Rozdział | Zajęcia |
